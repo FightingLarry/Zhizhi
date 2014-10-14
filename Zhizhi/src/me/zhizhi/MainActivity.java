@@ -1,5 +1,7 @@
 package me.zhizhi;
 
+import me.zhizhi.db.dao.TeachersDao;
+import me.zhizhi.db.tables.Teachers;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.SimpleCursorAdapter;
+
+import com.twotoasters.jazzylistview.JazzyListView;
 
 public class MainActivity extends ActionBarActivity implements
         NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -107,6 +113,10 @@ public class MainActivity extends ActionBarActivity implements
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        private TeachersDao mTeachersDao;
+
+        private JazzyListView mJazzyListView;
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -120,12 +130,24 @@ public class MainActivity extends ActionBarActivity implements
         }
 
         public PlaceholderFragment() {
+
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            mTeachersDao = new TeachersDao(getActivity());
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            mJazzyListView = (JazzyListView) rootView.findViewById(R.id.list);
+            ListAdapter adapter = new SimpleCursorAdapter(getActivity(),
+                    android.R.layout.simple_list_item_1, mTeachersDao.queryAll(),
+                    new String[] { Teachers.TEACHER_NAME }, new int[] { android.R.id.text1 });
+            mJazzyListView.setAdapter(adapter);
             return rootView;
         }
 
