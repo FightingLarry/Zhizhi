@@ -1,26 +1,50 @@
-//package me.zhizhi.adapter;
-//
-//import android.content.Context;
-//import android.database.Cursor;
-//import android.support.v4.widget.CursorAdapter;
-//import android.view.View;
-//import android.view.ViewGroup;
-//
-//public class AbstractAdapter<T> extends CursorAdapter {
-//
-//    public AbstractAdapter(Context context, Cursor c) {
-//        super(context, c, true);
-//        // TODO Auto-generated constructor stub
-//    }
-//
-//    @Override
-//    public void bindView(View view, Context context, Cursor cursor) {
-//
-//    }
-//
-//    @Override
-//    public View newView(Context context, Cursor cursor, ViewGroup parent) {
-//        return null;
-//    }
-//
-//}
+package me.zhizhi.adapter;
+
+import java.util.List;
+
+import me.zhizhi.utils.CollectionUtils;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.widget.BaseAdapter;
+
+public abstract class AbstractAdapter<T> extends BaseAdapter {
+
+    protected Context mContext;
+
+    protected LayoutInflater mInflater;
+
+    protected List<T> mList;
+
+    @Override
+    public abstract Object getItem(int position);
+
+    public abstract void clearItem();
+
+    public abstract void addItem(T t);
+
+    public abstract void addItem(List<T> list);
+
+    public Object removeItem(int position) {
+        return null;
+    }
+
+    public void addItem(int postion, T t) {
+    }
+
+    public List<T> getList() {
+        return mList;
+    }
+
+    public void removeAll(List<T> list) {
+        mList.removeAll(list);
+    }
+
+    public int getCount() {
+        return mList.size();
+    }
+
+    public boolean isEmpty() {
+        return CollectionUtils.isEmpty(mList);
+    }
+
+}
