@@ -1,5 +1,7 @@
-package me.zhizhi;
+package me.zhizhi.fragment;
 
+import me.zhizhi.R;
+import me.zhizhi.R.layout;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

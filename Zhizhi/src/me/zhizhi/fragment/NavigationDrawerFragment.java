@@ -1,5 +1,6 @@
-package me.zhizhi;
+package me.zhizhi.fragment;
 
+import me.zhizhi.R;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -251,7 +252,7 @@ public class NavigationDrawerFragment extends BaseFragment {
             return true;
         }
 
-        if (item.getItemId() == R.id.action_example) {
+        if (item.getItemId() == R.id.add) {
             Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
             return true;
         }
