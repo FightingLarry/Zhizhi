@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string-array name="titles">
+        <item>课程表</item>
+        <item>班级们</item>
+        <item>老师们</item>
+        <item>课程们</item>
+        <item>教室们</item>
+    </string-array>
+
+</resources>

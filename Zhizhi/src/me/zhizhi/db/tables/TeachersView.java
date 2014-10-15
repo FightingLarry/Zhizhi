@@ -1,6 +1,6 @@
 package me.zhizhi.db.tables;
 
-public class TeachersView {
+public class TeachersView extends Tables {
 
     public final static String TABLENAME = "teachers_view";
 

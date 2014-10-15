@@ -2,6 +2,8 @@ package me.zhizhi.activity;
 
 import me.zhizhi.R;
 import me.zhizhi.fragment.ClassesFragment;
+import me.zhizhi.fragment.ClassroomsFragment;
+import me.zhizhi.fragment.CoursesFragment;
 import me.zhizhi.fragment.NavigationDrawerFragment;
 import me.zhizhi.fragment.TeachersFragment;
 import android.os.Bundle;
@@ -52,27 +54,28 @@ public class MainActivity extends ActionBarActivity implements
                 break;
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, TeachersFragment.newInstance()).commit();
+                        .replace(R.id.container, ClassesFragment.newInstance()).commit();
                 break;
             case 2:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, TeachersFragment.newInstance()).commit();
                 break;
+            case 3:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, CoursesFragment.newInstance()).commit();
+                break;
+            case 4:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, ClassroomsFragment.newInstance()).commit();
+                break;
         }
+
+        onSectionAttached(position);
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
+    public void onSectionAttached(int position) {
+        String[] titles = getResources().getStringArray(R.array.titles);
+        mTitle = titles[position];
     }
 
     public void restoreActionBar() {
