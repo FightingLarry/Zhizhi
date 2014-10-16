@@ -1,7 +1,6 @@
 package me.zhizhi.db.dao;
 
 import me.zhizhi.db.tables.Classrooms;
-import me.zhizhi.db.tables.Tables;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -17,7 +16,7 @@ public class ClassroomsDao extends BaseDao {
     }
 
     public Cursor queryAll() {
-        String[] columns = new String[] { Classrooms.CLASSROOM_ID + " AS " + Tables._ID,
+        String[] columns = new String[] { Classrooms.CLASSROOM_ID + " AS _id",
                 Classrooms.CLASSROOM_NAME };
         return query(columns, null, null, null, null, null, null);
     }

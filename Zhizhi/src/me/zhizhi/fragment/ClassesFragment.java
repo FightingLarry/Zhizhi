@@ -1,21 +1,23 @@
 package me.zhizhi.fragment;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import me.zhizhi.R;
-import me.zhizhi.db.dao.ClassessDao;
+import me.zhizhi.adapter.ClassesAdapter;
 import me.zhizhi.db.tables.Classes;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
-import android.widget.SimpleCursorAdapter;
 
+import com.j256.ormlite.dao.Dao;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.JazzyListView;
 
 public class ClassesFragment extends BaseFragment {
 
-    private ClassessDao mClassessDao;
+    private Dao<Classes, Integer> mClassessDao;
 
     private JazzyListView mJazzyListView;
 
@@ -27,7 +29,7 @@ public class ClassesFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mClassessDao = new ClassessDao(getActivity());
+
     }
 
     @Override
@@ -35,10 +37,17 @@ public class ClassesFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         mJazzyListView = (JazzyListView) rootView.findViewById(R.id.list);
         mJazzyListView.setTransitionEffect(JazzyHelper.FAN);
-        ListAdapter adapter = new SimpleCursorAdapter(mActivity,
-                android.R.layout.simple_list_item_1, mClassessDao.queryAll(),
-                new String[] { Classes.CLASS_NAME }, new int[] { android.R.id.text1 });
-        mJazzyListView.setAdapter(adapter);
+
+        try {
+            mClassessDao = getDatabaseHelper().getClassesDao();
+            ClassesAdapter adapter = new ClassesAdapter(mActivity);
+            mJazzyListView.setAdapter(adapter);
+            List<Classes> list = mClassessDao.queryForAll();
+            adapter.addItem(list);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return rootView;
     }
 

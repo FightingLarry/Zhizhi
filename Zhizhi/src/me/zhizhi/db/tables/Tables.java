@@ -1,17 +1,12 @@
 package me.zhizhi.db.tables;
 
-public class Tables {
+import java.io.Serializable;
 
-    public final static String _ID = "_id";
+public class Tables implements Serializable {
 
-    private int _id;
-
-    public int getId() {
-        return _id;
-    }
-
-    public void setId(int _id) {
-        this._id = _id;
-    }
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 8878288142287434655L;
 
 }

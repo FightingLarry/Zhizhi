@@ -3,5 +3,9 @@
 
     <item name="layout_container_main" type="id"/>
     <item name="add" type="id"/>
+    <item name="root" type="id"/>
+    <item name="item_root" type="id"/>
+    <item name="item_title" type="id"/>
+    <item name="item_content" type="id"/>
 
 </resources>

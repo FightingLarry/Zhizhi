@@ -1,19 +1,25 @@
 package me.zhizhi.db.tables;
 
-public class Classes extends Tables {
+import java.io.Serializable;
 
-    public final static String TABLENAME = "classes";
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-    public final static String CLASS_ID = "classID";
+@DatabaseTable(tableName = "classes")
+public class Classes implements Serializable {
 
-    public final static String CLASS_NAME = "className";
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -5860780579455954237L;
 
-    public final static String STUDENTS = "students";
-
+    @DatabaseField(generatedId = true)
     private Integer classID;
 
+    @DatabaseField
     private String className;
 
+    @DatabaseField
     private Integer students;
 
     public Integer getClassID() {
