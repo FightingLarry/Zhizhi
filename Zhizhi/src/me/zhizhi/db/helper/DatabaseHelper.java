@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
-import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -16,10 +15,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private final static String TAG = DatabaseHelper.class.getSimpleName();
 
-    private Dao<Classes, Integer> mClassesDao;
-
     // name of the database file for your application -- change to something appropriate for your app
-    private static final String DATABASE_NAME = "zhizhi.db";
+    public static final String DATABASE_NAME = "zhizhi.db";
 
     // any time you make changes to your database objects, you may have to increase the database version
     private static final int DATABASE_VERSION = 1;
@@ -46,19 +43,4 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     }
 
-    public Dao<Classes, Integer> getClassesDao() throws SQLException {
-        if (mClassesDao == null) {
-            mClassesDao = getDao(Classes.class);
-        }
-        return mClassesDao;
-    }
-
-    /**
-     * Close the database connections and clear any cached DAOs.
-     */
-    @Override
-    public void close() {
-        super.close();
-        mClassesDao = null;
-    }
 }

@@ -39,7 +39,7 @@ public class ClassesFragment extends BaseFragment {
         mJazzyListView.setTransitionEffect(JazzyHelper.FAN);
 
         try {
-            mClassessDao = getDatabaseHelper().getClassesDao();
+            mClassessDao = mSQLiteAssetHelper.getClassesDao();
             ClassesAdapter adapter = new ClassesAdapter(mActivity);
             mJazzyListView.setAdapter(adapter);
             List<Classes> list = mClassessDao.queryForAll();

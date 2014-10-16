@@ -1,16 +1,15 @@
 package me.zhizhi.fragment;
 
-import me.zhizhi.db.helper.DatabaseHelper;
+import me.zhizhi.db.helper.SQLiteAssetHelper;
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 public class BaseFragment extends Fragment {
 
     protected Activity mActivity;
 
-    private DatabaseHelper mDatabaseHelper;
+    protected SQLiteAssetHelper mSQLiteAssetHelper;
 
     @Override
     public void onAttach(Activity activity) {
@@ -18,20 +17,15 @@ public class BaseFragment extends Fragment {
         this.mActivity = activity;
     }
 
-    protected DatabaseHelper getDatabaseHelper() {
-        if (mDatabaseHelper == null) {
-            mDatabaseHelper = OpenHelperManager.getHelper(mActivity, DatabaseHelper.class);
-        }
-        return mDatabaseHelper;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mSQLiteAssetHelper = SQLiteAssetHelper.getInstance(mActivity);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // You'll need this in your class to release the helper when done.
-        if (mDatabaseHelper != null) {
-            OpenHelperManager.releaseHelper();
-            mDatabaseHelper = null;
-        }
+        SQLiteAssetHelper.getInstance(mActivity).close();
     }
 }

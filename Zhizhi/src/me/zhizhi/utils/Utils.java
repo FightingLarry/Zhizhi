@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -512,5 +514,17 @@ public class Utils {
      */
     public static long getMaxImageLength() {
         return Math.min(4098, getTotalMemory()) * 1024L;
+    }
+
+    public static void writeExtractedFileToDisk(InputStream in, OutputStream outs)
+            throws IOException {
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = in.read(buffer)) > 0) {
+            outs.write(buffer, 0, length);
+        }
+        outs.flush();
+        outs.close();
+        in.close();
     }
 }
