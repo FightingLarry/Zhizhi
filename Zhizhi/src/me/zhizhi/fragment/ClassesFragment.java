@@ -33,7 +33,7 @@ public class ClassesFragment extends BaseFragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		try {
-			mClassessDao = mSQLiteAssetHelper.getClassesDao();
+			// mClassessDao = getDatabaseHelper().getClassesDao();
 			List<Classes> list = mClassessDao.queryForAll();
 			getAdapter().addItem(list);
 		} catch (SQLException e) {

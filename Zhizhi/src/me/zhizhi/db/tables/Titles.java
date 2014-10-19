@@ -1,31 +1,61 @@
 package me.zhizhi.db.tables;
 
-public class Titles extends Tables {
+import java.io.Serializable;
 
-    public final static String TABLENAME = "titles";
+import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
 
-    public final static String TITLE_ID = "titleID";
+@DatabaseTable(tableName = "titles")
+public class Titles implements Serializable {
 
-    public final static String TITLE_NAME = "titleName";
+	private static final long serialVersionUID = 1L;
 
-    private Integer titleID;
+	@DatabaseField(generatedId = true)
+	private int titleID;
 
-    private String titleName;
+	@DatabaseField
+	private String titleName;
 
-    public Integer getTitleID() {
-        return titleID;
-    }
+	/**
+	 * 在数据库中不会生成对应的字段 获取到Titles的时候同时会获取Titles下面的Teachers
+	 * 要注意的是：删除Titles的时候，并不会自动删除对应的Teachers
+	 */
+	@ForeignCollectionField
+	private ForeignCollection<Teachers> teacher;
 
-    public void setTitleID(Integer titleID) {
-        this.titleID = titleID;
-    }
+	public Titles() {
+		super();
+	}
 
-    public String getTitleName() {
-        return titleName;
-    }
+	public Titles(String titleName) {
+		super();
+		this.titleName = titleName;
+	}
 
-    public void setTitleName(String titleName) {
-        this.titleName = titleName;
-    }
+	public int getTitleID() {
+		return titleID;
+	}
+
+	public void setTitleID(int titleID) {
+		this.titleID = titleID;
+	}
+
+	public String getTitleName() {
+		return titleName;
+	}
+
+	public void setTitleName(String titleName) {
+		this.titleName = titleName;
+	}
+
+	public ForeignCollection<Teachers> getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(ForeignCollection<Teachers> teacher) {
+		this.teacher = teacher;
+	}
 
 }

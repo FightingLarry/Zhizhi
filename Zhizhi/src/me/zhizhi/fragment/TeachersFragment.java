@@ -25,7 +25,7 @@ public class TeachersFragment extends BaseFragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		try {
-			mTeachersDao = mSQLiteAssetHelper.getTeachersDao();
+			mTeachersDao = getDatabaseHelper().getTeachersDao();
 			List<Teachers> list = mTeachersDao.queryForAll();
 			getAdapter().addItem(list);
 		} catch (SQLException e) {

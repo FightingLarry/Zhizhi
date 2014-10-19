@@ -11,19 +11,40 @@ public class Teachers implements Serializable {
 	private static final long serialVersionUID = -3550698527564106621L;
 
 	@DatabaseField(generatedId = true)
-	private Integer teacherID;
+	private int teacherID;
 
 	@DatabaseField
 	private String teacherName;
 
-	@DatabaseField
-	private Integer titleID;
+	/**
+	 * 这个是一个普通的字段@DatabaseField，只是在后面加了个foreign 在数据库中的名称默认为title_id
+	 * 查询到的Teachers对象中可以直接获取到对应的Titles 删除Teachers，并不会同时删除Titles
+	 */
+	@DatabaseField(foreign = true, foreignAutoRefresh = true)
+	private Titles title;
 
-	public Integer getTeacherID() {
+	// 必须有一个无参的构造函数
+	public Teachers() {
+		super();
+	}
+
+	public Teachers(String teacherName, Titles title) {
+		super();
+		this.teacherName = teacherName;
+		this.title = title;
+	}
+
+	public Teachers(int teacherID, String teacherName) {
+		super();
+		this.teacherID = teacherID;
+		this.teacherName = teacherName;
+	}
+
+	public int getTeacherID() {
 		return teacherID;
 	}
 
-	public void setTeacherID(Integer teacherID) {
+	public void setTeacherID(int teacherID) {
 		this.teacherID = teacherID;
 	}
 
@@ -35,12 +56,12 @@ public class Teachers implements Serializable {
 		this.teacherName = teacherName;
 	}
 
-	public Integer getTitleID() {
-		return titleID;
+	public Titles getTitle() {
+		return title;
 	}
 
-	public void setTitleID(Integer titleID) {
-		this.titleID = titleID;
+	public void setTitle(Titles title) {
+		this.title = title;
 	}
 
 }

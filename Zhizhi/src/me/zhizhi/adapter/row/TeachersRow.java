@@ -26,9 +26,10 @@ public class TeachersRow {
 			return;
 		}
 		ViewHolder hodler = (ViewHolder) view.getTag();
-
 		hodler.mTitle.setText(mTeachers.getTeacherName());
-		hodler.mContent.setText(String.valueOf(mTeachers.getTitleID()));
+		if (mTeachers.getTitle() != null) {
+			hodler.mContent.setText(mTeachers.getTitle().getTitleName());
+		}
 
 	}
 

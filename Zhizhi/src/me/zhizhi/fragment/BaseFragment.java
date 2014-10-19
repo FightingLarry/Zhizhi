@@ -2,7 +2,7 @@ package me.zhizhi.fragment;
 
 import me.zhizhi.R;
 import me.zhizhi.adapter.AbstractAdapter;
-import me.zhizhi.db.helper.SQLiteAssetHelper;
+import me.zhizhi.db.helper.DatabaseHelper;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,13 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.JazzyListView;
 
 public class BaseFragment extends Fragment {
 
 	protected Activity mActivity;
-	protected SQLiteAssetHelper mSQLiteAssetHelper;
+	private DatabaseHelper mDatabaseHelper = null;
 	protected JazzyListView mJazzyListView;
 
 	@Override
@@ -28,7 +29,6 @@ public class BaseFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mSQLiteAssetHelper = SQLiteAssetHelper.getInstance(mActivity);
 	}
 
 	@Override
@@ -61,11 +61,23 @@ public class BaseFragment extends Fragment {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		SQLiteAssetHelper.getInstance(mActivity).close();
+
+		if (mDatabaseHelper != null) {
+			OpenHelperManager.releaseHelper();
+			mDatabaseHelper = null;
+		}
 	}
 
 	protected AbstractAdapter<?> getAdapter() {
 		return null;
+	}
+
+	protected DatabaseHelper getDatabaseHelper() {
+		if (mDatabaseHelper == null) {
+			mDatabaseHelper = OpenHelperManager.getHelper(getActivity(),
+					DatabaseHelper.class);
+		}
+		return mDatabaseHelper;
 	}
 
 }
