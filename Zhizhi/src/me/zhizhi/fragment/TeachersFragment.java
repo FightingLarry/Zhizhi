@@ -1,45 +1,49 @@
 package me.zhizhi.fragment;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import me.zhizhi.R;
-import me.zhizhi.db.dao.TeachersDao;
+import me.zhizhi.adapter.AbstractAdapter;
+import me.zhizhi.adapter.TeachersAdapter;
 import me.zhizhi.db.tables.Teachers;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListAdapter;
-import android.widget.SimpleCursorAdapter;
 
-import com.twotoasters.jazzylistview.JazzyHelper;
-import com.twotoasters.jazzylistview.JazzyListView;
+import com.j256.ormlite.dao.Dao;
 
 public class TeachersFragment extends BaseFragment {
+	private Dao<Teachers, Integer> mTeachersDao;
+	private AbstractAdapter<Teachers> mAdapter;
 
-    private TeachersDao mTeachersDao;
+	public static TeachersFragment newInstance() {
+		TeachersFragment fragment = new TeachersFragment();
+		return fragment;
+	}
 
-    private JazzyListView mJazzyListView;
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		try {
+			mTeachersDao = mSQLiteAssetHelper.getTeachersDao();
+			List<Teachers> list = mTeachersDao.queryForAll();
+			getAdapter().addItem(list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public static TeachersFragment newInstance() {
-        TeachersFragment fragment = new TeachersFragment();
-        return fragment;
-    }
+	@Override
+	protected int getLayoutResource() {
+		return R.layout.fragment_main;
+	}
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mTeachersDao = new TeachersDao(getActivity());
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        mJazzyListView = (JazzyListView) rootView.findViewById(R.id.list);
-        mJazzyListView.setTransitionEffect(JazzyHelper.FAN);
-        ListAdapter adapter = new SimpleCursorAdapter(mActivity,
-                android.R.layout.simple_list_item_1, mTeachersDao.queryAll(),
-                new String[] { Teachers.TEACHER_NAME }, new int[] { android.R.id.text1 });
-        mJazzyListView.setAdapter(adapter);
-        return rootView;
-    }
+	@Override
+	protected AbstractAdapter<Teachers> getAdapter() {
+		if (mAdapter == null) {
+			mAdapter = new TeachersAdapter(mActivity);
+		}
+		return mAdapter;
+	}
 
 }

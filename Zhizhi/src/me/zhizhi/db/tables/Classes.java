@@ -8,42 +8,39 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "classes")
 public class Classes implements Serializable {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = -5860780579455954237L;
+	private static final long serialVersionUID = -5860780579455954237L;
 
-    @DatabaseField(generatedId = true)
-    private Integer classID;
+	@DatabaseField(generatedId = true)
+	private Integer classID;
 
-    @DatabaseField
-    private String className;
+	@DatabaseField
+	private String className;
 
-    @DatabaseField
-    private Integer students;
+	@DatabaseField
+	private Integer students;
 
-    public Integer getClassID() {
-        return classID;
-    }
+	public Integer getClassID() {
+		return classID;
+	}
 
-    public void setClassID(Integer classID) {
-        this.classID = classID;
-    }
+	public void setClassID(Integer classID) {
+		this.classID = classID;
+	}
 
-    public String getClassName() {
-        return className;
-    }
+	public String getClassName() {
+		return className;
+	}
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
+	public void setClassName(String className) {
+		this.className = className;
+	}
 
-    public Integer getStudents() {
-        return students;
-    }
+	public Integer getStudents() {
+		return students;
+	}
 
-    public void setStudents(Integer students) {
-        this.students = students;
-    }
+	public void setStudents(Integer students) {
+		this.students = students;
+	}
 
 }

@@ -1,43 +1,46 @@
 package me.zhizhi.db.tables;
 
-public class Teachers extends Tables {
+import java.io.Serializable;
 
-    public final static String TABLENAME = "teachers_titles";
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-    public final static String TEACHER_ID = "teacherID";
+@DatabaseTable(tableName = "teachers")
+public class Teachers implements Serializable {
 
-    public final static String TEACHER_NAME = "teacherName";
+	private static final long serialVersionUID = -3550698527564106621L;
 
-    public final static String TITLE_ID = Titles.TITLE_ID;
+	@DatabaseField(generatedId = true)
+	private Integer teacherID;
 
-    private Integer teacherID;
+	@DatabaseField
+	private String teacherName;
 
-    private String teacherName;
+	@DatabaseField
+	private Integer titleID;
 
-    private Integer titleID;
+	public Integer getTeacherID() {
+		return teacherID;
+	}
 
-    public Integer getTeacherID() {
-        return teacherID;
-    }
+	public void setTeacherID(Integer teacherID) {
+		this.teacherID = teacherID;
+	}
 
-    public void setTeacherID(Integer teacherID) {
-        this.teacherID = teacherID;
-    }
+	public String getTeacherName() {
+		return teacherName;
+	}
 
-    public String getTeacherName() {
-        return teacherName;
-    }
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
-    }
+	public Integer getTitleID() {
+		return titleID;
+	}
 
-    public Integer getTitleID() {
-        return titleID;
-    }
-
-    public void setTitleID(Integer titleID) {
-        this.titleID = titleID;
-    }
+	public void setTitleID(Integer titleID) {
+		this.titleID = titleID;
+	}
 
 }
