@@ -1,22 +1,31 @@
 package me.zhizhi.db.tables;
 
-public class Courses extends Tables {
+import java.io.Serializable;
 
-    public final static String TABLENAME = "courses";
+import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
 
-    public final static String COURSE_ID = "courseID";
+@DatabaseTable(tableName = "courses")
+public class Courses implements Serializable {
 
-    public final static String COURSE_NAME = "courseName";
+    private static final long serialVersionUID = -2562924436887324487L;
 
-    private Integer courseID;
+    @DatabaseField(generatedId = true)
+    private int courseID;
 
+    @DatabaseField
     private String courseName;
 
-    public Integer getCourseID() {
+    @ForeignCollectionField
+    private ForeignCollection<Teachers> teachers;
+
+    public int getCourseID() {
         return courseID;
     }
 
-    public void setCourseID(Integer courseID) {
+    public void setCourseID(int courseID) {
         this.courseID = courseID;
     }
 
@@ -26,6 +35,14 @@ public class Courses extends Tables {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public ForeignCollection<Teachers> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(ForeignCollection<Teachers> teachers) {
+        this.teachers = teachers;
     }
 
 }
