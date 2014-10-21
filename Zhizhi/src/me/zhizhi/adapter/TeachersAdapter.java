@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.zhizhi.adapter.row.TeachersRow;
-import me.zhizhi.db.tables.Teachers;
+import me.zhizhi.db.entity.Teachers;
 import me.zhizhi.utils.CollectionUtils;
 import android.content.Context;
 import android.view.View;

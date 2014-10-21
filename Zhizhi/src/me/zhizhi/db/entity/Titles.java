@@ -1,4 +1,4 @@
-package me.zhizhi.db.tables;
+package me.zhizhi.db.entity;
 
 import java.io.Serializable;
 

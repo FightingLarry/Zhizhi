@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.zhizhi.adapter.row.ClassesRow;
-import me.zhizhi.db.tables.Classes;
+import me.zhizhi.db.entity.Classes;
 import me.zhizhi.utils.CollectionUtils;
 import android.content.Context;
 import android.view.View;

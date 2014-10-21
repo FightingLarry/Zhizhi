@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 
-import me.zhizhi.db.tables.Classes;
-import me.zhizhi.db.tables.Teachers;
+import me.zhizhi.db.entity.Classes;
+import me.zhizhi.db.entity.Teachers;
 import me.zhizhi.utils.Utils;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

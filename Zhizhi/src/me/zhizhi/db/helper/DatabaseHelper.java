@@ -2,8 +2,15 @@ package me.zhizhi.db.helper;
 
 import java.sql.SQLException;
 
-import me.zhizhi.db.tables.Teachers;
-import me.zhizhi.db.tables.Titles;
+import me.zhizhi.db.entity.Academys;
+import me.zhizhi.db.entity.Classes;
+import me.zhizhi.db.entity.ClassesCurriculums;
+import me.zhizhi.db.entity.Classrooms;
+import me.zhizhi.db.entity.Courses;
+import me.zhizhi.db.entity.CoursesTeachers;
+import me.zhizhi.db.entity.Curriculums;
+import me.zhizhi.db.entity.Teachers;
+import me.zhizhi.db.entity.Titles;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -34,8 +41,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase arg0, ConnectionSource arg1) {
 		try {
+			TableUtils.createTable(connectionSource, Academys.class);
+			TableUtils.createTable(connectionSource, Classes.class);
+			TableUtils.createTable(connectionSource, Classrooms.class);
+			TableUtils.createTable(connectionSource, Curriculums.class);
+			TableUtils.createTable(connectionSource, Courses.class);
 			TableUtils.createTable(connectionSource, Teachers.class);
 			TableUtils.createTable(connectionSource, Titles.class);
+			TableUtils.createTable(connectionSource, ClassesCurriculums.class);
+			TableUtils.createTable(connectionSource, CoursesTeachers.class);
 
 			Titles t1 = new Titles("教授");
 			getTitlesDao().create(t1);
@@ -51,8 +65,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase arg0, ConnectionSource arg1, int arg2,
 			int arg3) {
 		try {
+			TableUtils.dropTable(arg1, Academys.class, true);
+			TableUtils.dropTable(arg1, Classes.class, true);
+			TableUtils.dropTable(arg1, Classrooms.class, true);
+			TableUtils.dropTable(arg1, Curriculums.class, true);
+			TableUtils.dropTable(arg1, Courses.class, true);
 			TableUtils.dropTable(arg1, Teachers.class, true);
 			TableUtils.dropTable(arg1, Titles.class, true);
+			TableUtils.dropTable(arg1, ClassesCurriculums.class, true);
+			TableUtils.dropTable(arg1, CoursesTeachers.class, true);
 			this.onCreate(arg0, arg1);
 
 		} catch (SQLException e) {

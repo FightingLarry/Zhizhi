@@ -1,4 +1,4 @@
-package me.zhizhi.db.tables;
+package me.zhizhi.db.entity;
 
 import java.io.Serializable;
 
@@ -9,6 +9,8 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Teachers implements Serializable {
 
 	private static final long serialVersionUID = -3550698527564106621L;
+
+	public static final String FOREIGN_ID = "teacher_id";
 
 	@DatabaseField(generatedId = true)
 	private int teacherID;
@@ -22,6 +24,9 @@ public class Teachers implements Serializable {
 	 */
 	@DatabaseField(foreign = true, foreignAutoRefresh = true)
 	private Titles title;
+
+	// @ForeignCollectionField
+	// private ForeignCollection<Courses> courses;
 
 	// 必须有一个无参的构造函数
 	public Teachers() {

@@ -6,7 +6,7 @@ import java.util.List;
 import me.zhizhi.R;
 import me.zhizhi.adapter.AbstractAdapter;
 import me.zhizhi.adapter.TeachersAdapter;
-import me.zhizhi.db.tables.Teachers;
+import me.zhizhi.db.entity.Teachers;
 import android.os.Bundle;
 import android.view.View;
 

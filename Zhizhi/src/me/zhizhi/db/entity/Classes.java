@@ -1,4 +1,4 @@
-package me.zhizhi.db.tables;
+package me.zhizhi.db.entity;
 
 import java.io.Serializable;
 
@@ -10,6 +10,8 @@ public class Classes implements Serializable {
 
 	private static final long serialVersionUID = -5860780579455954237L;
 
+	public static final String FOREIGN_ID = "class_id";
+
 	@DatabaseField(generatedId = true)
 	private Integer classID;
 
@@ -18,6 +20,12 @@ public class Classes implements Serializable {
 
 	@DatabaseField
 	private Integer students;
+
+	@DatabaseField(foreign = true, foreignAutoRefresh = true)
+	private Academys academy;
+
+	// @ForeignCollectionField
+	// private ForeignCollection<Curriculums> curriculums;
 
 	public Integer getClassID() {
 		return classID;
@@ -41,6 +49,18 @@ public class Classes implements Serializable {
 
 	public void setStudents(Integer students) {
 		this.students = students;
+	}
+
+	public Academys getAcademy() {
+		return academy;
+	}
+
+	public void setAcademy(Academys academy) {
+		this.academy = academy;
+	}
+
+	public Classes() {
+		super();
 	}
 
 }

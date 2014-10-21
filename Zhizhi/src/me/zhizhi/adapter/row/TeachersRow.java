@@ -1,7 +1,7 @@
 package me.zhizhi.adapter.row;
 
 import me.zhizhi.R;
-import me.zhizhi.db.tables.Teachers;
+import me.zhizhi.db.entity.Teachers;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
