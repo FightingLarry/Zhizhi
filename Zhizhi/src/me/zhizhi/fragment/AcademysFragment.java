@@ -33,6 +33,7 @@ public class AcademysFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         try {
+            long time = System.currentTimeMillis();
 
             List<Academys> list = getDatabaseHelper().getAcademysDao().queryForAll();
 
@@ -42,6 +43,8 @@ public class AcademysFragment extends BaseFragment {
                 cs = getDatabaseHelper().getCurriculumsList(c);
                 //                Courses course = cs.get(0).getCours();
             }
+
+            System.out.println((System.currentTimeMillis() - time) + "ms");
         } catch (SQLException e) {
             e.printStackTrace();
         }

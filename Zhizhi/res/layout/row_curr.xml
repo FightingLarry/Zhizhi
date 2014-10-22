@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/gap.normal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@id/item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="012一班"
+        style="@style/text_title"/>
+    <TextView
+        android:id="@id/item_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="12人"
+        style="@style/text_content"/>
+
+</LinearLayout>

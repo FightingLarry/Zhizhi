@@ -9,6 +9,8 @@
          https://developer.android.com/design/patterns/navigation-drawer.html
     -->
     <dimen name="navigation_drawer_width">240dp</dimen>
+    
+    <dimen name="curriculum_cell_width">70dp</dimen>
  
     
     <dimen name="gap.litle">3dp</dimen>

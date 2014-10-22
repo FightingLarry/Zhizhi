@@ -7,5 +7,9 @@
     <item name="item_root" type="id"/>
     <item name="item_title" type="id"/>
     <item name="item_content" type="id"/>
-
+    <item name="cell1" type="id"/>
+    <item name="cell2" type="id"/>
+    <item name="cell3" type="id"/>
+    <item name="cell4" type="id"/>
+    <item name="cell5" type="id"/>
 </resources>
