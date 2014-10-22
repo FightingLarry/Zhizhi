@@ -14,7 +14,7 @@ public class Courses implements Serializable {
 
     public static final String FOREIGN_ID = "cours_id";
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true, columnName = FOREIGN_ID)
     private int courseID;
 
     @DatabaseField

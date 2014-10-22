@@ -1,6 +1,7 @@
 package me.zhizhi.db.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -12,26 +13,25 @@ public class Classes implements Serializable {
 
     public static final String FOREIGN_ID = "class_id";
 
-    @DatabaseField(generatedId = true)
-    private Integer classID;
+    @DatabaseField(generatedId = true, columnName = FOREIGN_ID)
+    private int classID;
 
     @DatabaseField
     private String className;
 
     @DatabaseField
-    private Integer students;
+    private int students;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Academys academy;
 
-    // @ForeignCollectionField
-    // private ForeignCollection<Curriculums> curriculums;
+    private List<Curriculums> curriculums;
 
-    public Integer getClassID() {
+    public int getClassID() {
         return classID;
     }
 
-    public void setClassID(Integer classID) {
+    public void setClassID(int classID) {
         this.classID = classID;
     }
 
@@ -43,11 +43,11 @@ public class Classes implements Serializable {
         this.className = className;
     }
 
-    public Integer getStudents() {
+    public int getStudents() {
         return students;
     }
 
-    public void setStudents(Integer students) {
+    public void setStudents(int students) {
         this.students = students;
     }
 
@@ -61,6 +61,21 @@ public class Classes implements Serializable {
 
     public Classes() {
         super();
+    }
+
+    public List<Curriculums> getCurriculums() {
+        return curriculums;
+    }
+
+    public void setCurriculums(List<Curriculums> curriculums) {
+        this.curriculums = curriculums;
+    }
+
+    public Classes(String className, Integer students, Academys academy) {
+        super();
+        this.className = className;
+        this.students = students;
+        this.academy = academy;
     }
 
 }

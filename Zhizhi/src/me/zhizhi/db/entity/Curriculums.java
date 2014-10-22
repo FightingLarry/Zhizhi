@@ -32,7 +32,7 @@ public class Curriculums implements Serializable {
 
     public static final String FOREIGN_ID = "curriculum_id";
 
-    @DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true, columnName = FOREIGN_ID)
     private int curriculumID;
 
     @DatabaseField

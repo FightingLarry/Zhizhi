@@ -5,7 +5,6 @@
 package me.zhizhi.db.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
@@ -26,67 +25,104 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 @DatabaseTable(tableName = "academys")
 public class Academys implements Serializable {
-	private static final long serialVersionUID = 1604276097216176297L;
 
-	@DatabaseField(generatedId = true)
-	private int academyID;
+    private static final long serialVersionUID = 1604276097216176297L;
 
-	@DatabaseField
-	private String academyName;
-	/**
-	 * 学期
-	 */
-	@DatabaseField
-	private Date semester;
+    @DatabaseField(generatedId = true)
+    private int academyID;
 
-	@DatabaseField
-	private int halfYear;
+    @DatabaseField
+    private String academyName;
 
-	@ForeignCollectionField
-	private ForeignCollection<Classes> classes;
+    @DatabaseField
+    private String curriculumTitle;
 
-	public int getAcademyID() {
-		return academyID;
-	}
+    /**
+     * 学年
+     */
+    @DatabaseField
+    private int startYear;
 
-	public void setAcademyID(int academyID) {
-		this.academyID = academyID;
-	}
+    @DatabaseField
+    private int endYear;
 
-	public String getAcademyName() {
-		return academyName;
-	}
+    /**
+     * 0上半年，1是下半年
+     */
+    @DatabaseField
+    private int halfYear;
 
-	public void setAcademyName(String academyName) {
-		this.academyName = academyName;
-	}
+    @ForeignCollectionField
+    private ForeignCollection<Classes> classes;
 
-	public Date getSemester() {
-		return semester;
-	}
+    public int getAcademyID() {
+        return academyID;
+    }
 
-	public void setSemester(Date semester) {
-		this.semester = semester;
-	}
+    public void setAcademyID(int academyID) {
+        this.academyID = academyID;
+    }
 
-	public int getHalfYear() {
-		return halfYear;
-	}
+    public String getAcademyName() {
+        return academyName;
+    }
 
-	public void setHalfYear(int halfYear) {
-		this.halfYear = halfYear;
-	}
+    public void setAcademyName(String academyName) {
+        this.academyName = academyName;
+    }
 
-	public ForeignCollection<Classes> getClasses() {
-		return classes;
-	}
+    public int getHalfYear() {
+        return halfYear;
+    }
 
-	public void setClasses(ForeignCollection<Classes> classes) {
-		this.classes = classes;
-	}
+    public void setHalfYear(int halfYear) {
+        this.halfYear = halfYear;
+    }
 
-	public Academys() {
-		super();
-	}
+    public ForeignCollection<Classes> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(ForeignCollection<Classes> classes) {
+        this.classes = classes;
+    }
+
+    public int getStartYear() {
+        return startYear;
+    }
+
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
+    }
+
+    public int getEndYear() {
+        return endYear;
+    }
+
+    public void setEndYear(int endYear) {
+        this.endYear = endYear;
+    }
+
+    public Academys(String curriculumTitle, String academyName, int startYear, int endYear,
+            int halfYear) {
+        super();
+        this.academyName = academyName;
+        this.curriculumTitle = curriculumTitle;
+        this.startYear = startYear;
+        this.endYear = endYear;
+        this.halfYear = halfYear;
+    }
+
+    public String getCurriculumTitle() {
+        return curriculumTitle;
+    }
+
+    public void setCurriculumTitle(String curriculumTitle) {
+        this.curriculumTitle = curriculumTitle;
+    }
+
+    public Academys() {
+        super();
+    }
 
 }
