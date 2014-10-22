@@ -28,81 +28,87 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "curriculums")
 public class Curriculums implements Serializable {
 
-	private static final long serialVersionUID = 7511075687816530947L;
+    private static final long serialVersionUID = 7511075687816530947L;
 
-	public static final String FOREIGN_ID = "curriculum_id";
+    public static final String FOREIGN_ID = "curriculum_id";
 
-	@DatabaseField(generatedId = true)
-	private int curriculumID;
+    @DatabaseField(generatedId = true)
+    private int curriculumID;
 
-	@DatabaseField
-	private int week;
+    @DatabaseField
+    private int week;
 
-	@DatabaseField
-	private String time;
+    @DatabaseField
+    private int time;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true)
-	private Courses courses;
+    /**
+     * 0为每周都上课，1为单周，2为双周
+     */
+    @DatabaseField(defaultValue = "0")
+    private int cycle;
 
-	// /**
-	// * 两个班合上一堂课
-	// */
-	// @ForeignCollectionField
-	// private ForeignCollection<Classes> classes;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    private Courses course;
 
-	@ForeignCollectionField
-	private ForeignCollection<Classrooms> classrooms;
+    // /**
+    // * 两个班合上一堂课
+    // */
+    // @ForeignCollectionField
+    // private ForeignCollection<Classes> classes;
 
-	public int getCurriculumID() {
-		return curriculumID;
-	}
+    @ForeignCollectionField
+    private ForeignCollection<Classrooms> classrooms;
 
-	public void setCurriculumID(int curriculumID) {
-		this.curriculumID = curriculumID;
-	}
+    public int getCurriculumID() {
+        return curriculumID;
+    }
 
-	public int getWeek() {
-		return week;
-	}
+    public void setCurriculumID(int curriculumID) {
+        this.curriculumID = curriculumID;
+    }
 
-	public void setWeek(int week) {
-		this.week = week;
-	}
+    public int getWeek() {
+        return week;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    public void setWeek(int week) {
+        this.week = week;
+    }
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+    public int getTime() {
+        return time;
+    }
 
-	public Courses getCourses() {
-		return courses;
-	}
+    public void setTime(int time) {
+        this.time = time;
+    }
 
-	public void setCourses(Courses courses) {
-		this.courses = courses;
-	}
+    public Courses getCours() {
+        return course;
+    }
 
-	// public ForeignCollection<Classes> getClasses() {
-	// return classes;
-	// }
-	//
-	// public void setClasses(ForeignCollection<Classes> classes) {
-	// this.classes = classes;
-	// }
+    public void setCours(Courses course) {
+        this.course = course;
+    }
 
-	public ForeignCollection<Classrooms> getClassrooms() {
-		return classrooms;
-	}
+    public ForeignCollection<Classrooms> getClassrooms() {
+        return classrooms;
+    }
 
-	public void setClassrooms(ForeignCollection<Classrooms> classrooms) {
-		this.classrooms = classrooms;
-	}
+    public void setClassrooms(ForeignCollection<Classrooms> classrooms) {
+        this.classrooms = classrooms;
+    }
 
-	public Curriculums() {
-		super();
-	}
+    public Curriculums() {
+        super();
+    }
+
+    public Curriculums(int week, int time, int cycle, Courses course) {
+        super();
+        this.week = week;
+        this.time = time;
+        this.cycle = cycle;
+        this.course = course;
+    }
 
 }
