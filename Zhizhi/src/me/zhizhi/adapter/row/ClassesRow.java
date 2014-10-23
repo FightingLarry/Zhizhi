@@ -89,7 +89,7 @@ public class ClassesRow {
         }
         ViewHolder holder = (ViewHolder) view.getTag();
 
-        holder.mClassView.setText(_class.getClassName());
+        holder.mClassView.setText(_class.getClassName() + "(" + _class.getStudents() + ")");
         List<Curriculums> curriculumsList = null;
         try {
             curriculumsList = databaseHelper.getCurriculumsList(_class);
