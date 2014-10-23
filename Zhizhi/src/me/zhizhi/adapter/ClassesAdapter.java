@@ -5,6 +5,7 @@ import java.util.List;
 
 import me.zhizhi.adapter.row.ClassesRow;
 import me.zhizhi.db.entity.Classes;
+import me.zhizhi.db.helper.DatabaseHelper;
 import me.zhizhi.utils.CollectionUtils;
 import android.content.Context;
 import android.view.View;
@@ -12,53 +13,60 @@ import android.view.ViewGroup;
 
 public class ClassesAdapter extends AbstractAdapter<Classes> {
 
-	protected Context mContext;
+    private Context mContext;
 
-	public ClassesAdapter(Context context) {
-		this.mContext = context;
-		if (mList == null) {
-			mList = new ArrayList<Classes>();
-		}
-	}
+    private View mHead;
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+    private DatabaseHelper mDatabaseHelper;
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		if (convertView == null) {
-			convertView = ClassesRow.newView(mContext);
-		}
-		ClassesRow.bindView(convertView, mList.get(position));
+    public ClassesAdapter(Context context, View head, DatabaseHelper databaseHelper) {
+        this.mContext = context;
+        this.mHead = head;
+        this.mDatabaseHelper = databaseHelper;
 
-		return convertView;
-	}
+        if (mList == null) {
+            mList = new ArrayList<Classes>();
+        }
+    }
 
-	@Override
-	public Object getItem(int position) {
-		return mList.get(position);
-	}
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-	@Override
-	public void clearItem() {
-		mList.clear();
-	}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = ClassesRow.newView(mContext, mHead);
+        }
+        ClassesRow.bindView(convertView, mList.get(position), mDatabaseHelper);
 
-	@Override
-	public void addItem(Classes t) {
-		mList.add(t);
-	}
+        return convertView;
+    }
 
-	@Override
-	public void addItem(List<Classes> list) {
-		mList.addAll(list);
-	}
+    @Override
+    public Object getItem(int position) {
+        return mList.get(position);
+    }
 
-	@Override
-	public boolean isEmpty() {
-		return CollectionUtils.isEmpty(mList);
-	}
+    @Override
+    public void clearItem() {
+        mList.clear();
+    }
+
+    @Override
+    public void addItem(Classes t) {
+        mList.add(t);
+    }
+
+    @Override
+    public void addItem(List<Classes> list) {
+        mList.addAll(list);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return CollectionUtils.isEmpty(mList);
+    }
 
 }

@@ -7,19 +7,19 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.HorizontalScrollView;
 
-public class MyHScrollView extends HorizontalScrollView {
+public class HScrollView extends HorizontalScrollView {
 
     ScrollViewObserver mScrollViewObserver = new ScrollViewObserver();
 
-    public MyHScrollView(Context context, AttributeSet attrs, int defStyle) {
+    public HScrollView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public MyHScrollView(Context context, AttributeSet attrs) {
+    public HScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MyHScrollView(Context context) {
+    public HScrollView(Context context) {
         super(context);
     }
 

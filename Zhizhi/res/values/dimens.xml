@@ -10,7 +10,11 @@
     -->
     <dimen name="navigation_drawer_width">240dp</dimen>
     
-    <dimen name="curriculum_cell_width">70dp</dimen>
+    <dimen name="curriculum_cell_height">20dp</dimen>
+    <dimen name="curriculum_cell_height2">40dp</dimen>
+    <dimen name="curriculum_cell_width">60dp</dimen>
+    <dimen name="curriculum_cell_width2">120dp</dimen>
+    <dimen name="curriculum_cell_width5">300dp</dimen>
  
     
     <dimen name="gap.litle">3dp</dimen>

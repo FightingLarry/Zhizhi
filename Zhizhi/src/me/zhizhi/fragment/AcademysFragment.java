@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import me.zhizhi.R;
-import me.zhizhi.adapter.AbstractAdapter;
 import me.zhizhi.adapter.ClassesAdapter;
 import me.zhizhi.db.entity.Academys;
 import me.zhizhi.db.entity.Classes;
@@ -55,12 +54,12 @@ public class AcademysFragment extends BaseFragment {
         return R.layout.fragment_main;
     }
 
-    @Override
-    protected AbstractAdapter<Classes> getAdapter() {
-        if (mAdapter == null) {
-            mAdapter = new ClassesAdapter(mActivity);
-        }
-        return mAdapter;
-    }
+    //    @Override
+    //    protected AbstractAdapter<Classes> getAdapter() {
+    //        if (mAdapter == null) {
+    //            mAdapter = new ClassesAdapter(mActivity);
+    //        }
+    //        return mAdapter;
+    //    }
 
 }

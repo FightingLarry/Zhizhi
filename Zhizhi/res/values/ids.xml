@@ -12,4 +12,14 @@
     <item name="cell3" type="id"/>
     <item name="cell4" type="id"/>
     <item name="cell5" type="id"/>
+    <item name="week_mon" type="id"/>
+    <item name="week_tue" type="id"/>
+    <item name="week_wed" type="id"/>
+    <item name="week_thu" type="id"/>
+    <item name="week_fri" type="id"/>
+    <item name="head" type="id"/>
+    <item name="list" type="id"/>
+    <item name="h_scrollview" type="id"/>
+    <item name="id_class" type="id"/>
+    <item name="h_scrollview_head" type="id"/>
 </resources>

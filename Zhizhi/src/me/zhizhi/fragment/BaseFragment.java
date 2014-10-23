@@ -16,68 +16,74 @@ import com.twotoasters.jazzylistview.JazzyListView;
 
 public class BaseFragment extends Fragment {
 
-	protected Activity mActivity;
-	private DatabaseHelper mDatabaseHelper = null;
-	protected JazzyListView mJazzyListView;
+    protected Activity mActivity;
 
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		this.mActivity = activity;
-	}
+    private DatabaseHelper mDatabaseHelper = null;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
+    protected JazzyListView mJazzyListView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View mainView = null;
-		if (getLayoutResource() != 0) {
-			mainView = inflater.inflate(getLayoutResource(), null);
-			mJazzyListView = (JazzyListView) mainView.findViewById(R.id.list);
-			if (mJazzyListView != null) {
-				mJazzyListView.setTransitionEffect(JazzyHelper.FAN);
-				if (getAdapter() != null) {
-					mJazzyListView.setAdapter(getAdapter());
-				}
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mActivity = activity;
+    }
 
-			}
-			super.onCreateView(inflater, container, savedInstanceState);
-		}
-		if (mainView == null) {
-			mainView = super.onCreateView(inflater, container,
-					savedInstanceState);
-		}
-		return mainView;
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-	protected int getLayoutResource() {
-		return 0;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View mainView = null;
+        if (getLayoutResource() != 0) {
+            mainView = inflater.inflate(getLayoutResource(), null);
+            mJazzyListView = (JazzyListView) mainView.findViewById(R.id.list);
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
+            initView(mainView);
 
-		if (mDatabaseHelper != null) {
-			OpenHelperManager.releaseHelper();
-			mDatabaseHelper = null;
-		}
-	}
+            if (mJazzyListView != null) {
+                mJazzyListView.setTransitionEffect(JazzyHelper.FAN);
+                if (getAdapter() != null) {
+                    mJazzyListView.setAdapter(getAdapter());
+                }
 
-	protected AbstractAdapter<?> getAdapter() {
-		return null;
-	}
+            }
+            super.onCreateView(inflater, container, savedInstanceState);
+        }
+        if (mainView == null) {
+            mainView = super.onCreateView(inflater, container, savedInstanceState);
+        }
+        return mainView;
+    }
 
-	protected DatabaseHelper getDatabaseHelper() {
-		if (mDatabaseHelper == null) {
-			mDatabaseHelper = OpenHelperManager.getHelper(getActivity(),
-					DatabaseHelper.class);
-		}
-		return mDatabaseHelper;
-	}
+    protected void initView(View mMainView) {
+
+    }
+
+    protected int getLayoutResource() {
+        return 0;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (mDatabaseHelper != null) {
+            OpenHelperManager.releaseHelper();
+            mDatabaseHelper = null;
+        }
+    }
+
+    protected AbstractAdapter<?> getAdapter() {
+        return null;
+    }
+
+    protected DatabaseHelper getDatabaseHelper() {
+        if (mDatabaseHelper == null) {
+            mDatabaseHelper = OpenHelperManager.getHelper(getActivity(), DatabaseHelper.class);
+        }
+        return mDatabaseHelper;
+    }
 
 }

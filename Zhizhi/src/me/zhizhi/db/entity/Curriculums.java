@@ -39,7 +39,7 @@ public class Curriculums implements Serializable {
     private int week;
 
     @DatabaseField
-    private int time;
+    private int lession;
 
     /**
      * 0为每周都上课，1为单周，2为双周
@@ -75,19 +75,19 @@ public class Curriculums implements Serializable {
         this.week = week;
     }
 
-    public int getTime() {
-        return time;
+    public int getLession() {
+        return lession;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setLession(int lession) {
+        this.lession = lession;
     }
 
-    public Courses getCours() {
+    public Courses getCourse() {
         return course;
     }
 
-    public void setCours(Courses course) {
+    public void setCourse(Courses course) {
         this.course = course;
     }
 
@@ -103,10 +103,10 @@ public class Curriculums implements Serializable {
         super();
     }
 
-    public Curriculums(int week, int time, int cycle, Courses course) {
+    public Curriculums(int week, int lession, int cycle, Courses course) {
         super();
         this.week = week;
-        this.time = time;
+        this.lession = lession;
         this.cycle = cycle;
         this.course = course;
     }

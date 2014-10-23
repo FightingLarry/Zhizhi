@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@id/cell5"
+        style="@style/text_curr_week_ceil"
+        android:layout_width="@dimen/curriculum_cell_width5"
+        android:layout_height="@dimen/curriculum_cell_height" 
+        android:text="@string/monday"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@id/cell1"
+            style="@style/text_curr_week_ceil"
+            android:layout_width="@dimen/curriculum_cell_width2"
+            android:layout_height="@dimen/curriculum_cell_height"
+            android:text="@string/morning" />
+
+        <TextView
+            android:id="@id/cell2"
+            style="@style/text_curr_week_ceil"
+            android:layout_width="@dimen/curriculum_cell_width2"
+            android:layout_height="@dimen/curriculum_cell_height"
+            android:text="@string/afternoon" />
+
+        <TextView
+            android:id="@id/cell3"
+            style="@style/text_curr_week_ceil"
+            android:layout_width="@dimen/curriculum_cell_width"
+            android:layout_height="@dimen/curriculum_cell_height"
+            android:text="@string/night" />
+    </LinearLayout>
+
+</LinearLayout>

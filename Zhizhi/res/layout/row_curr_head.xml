@@ -1,52 +1,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
     <TextView
-        android:id="@id/id_class"
-        style="@style/text_curr_week"
         android:layout_width="@dimen/curriculum_cell_width"
-        android:layout_height="fill_parent" />
+        android:layout_height="@dimen/curriculum_cell_height2"
+        style="@style/text_curr_week"
+        android:text="@string/s_class" />
 
     <me.zhizhi.widget.InterceptScrollContainer
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:focusable="false"
         android:orientation="horizontal" >
 
         <me.zhizhi.widget.HScrollView
-            android:id="@id/h_scrollview"
+            android:id="@id/h_scrollview_head"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:focusable="false"
             android:scrollbars="none" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <include
                     android:id="@id/week_mon"
-                    layout="@layout/row_curr_week" />
+                    layout="@layout/row_curr_week_head" />
 
                 <include
                     android:id="@id/week_tue"
-                    layout="@layout/row_curr_week" />
+                    layout="@layout/row_curr_week_head" />
 
                 <include
                     android:id="@id/week_wed"
-                    layout="@layout/row_curr_week" />
+                    layout="@layout/row_curr_week_head" />
 
                 <include
                     android:id="@id/week_thu"
-                    layout="@layout/row_curr_week" />
+                    layout="@layout/row_curr_week_head" />
 
                 <include
                     android:id="@id/week_fri"
-                    layout="@layout/row_curr_week" />
+                    layout="@layout/row_curr_week_head" />
             </LinearLayout>
         </me.zhizhi.widget.HScrollView>
     </me.zhizhi.widget.InterceptScrollContainer>

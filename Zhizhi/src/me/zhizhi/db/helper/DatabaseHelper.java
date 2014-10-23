@@ -3,6 +3,8 @@ package me.zhizhi.db.helper;
 import java.sql.SQLException;
 import java.util.List;
 
+import me.zhizhi.db.constants.Lessions;
+import me.zhizhi.db.constants.Week;
 import me.zhizhi.db.entity.Academys;
 import me.zhizhi.db.entity.Classes;
 import me.zhizhi.db.entity.ClassesCurriculums;
@@ -71,7 +73,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Courses c44 = new Courses("点集拓扑");
             getCoursesDao().create(c44);
 
-            Curriculums cur44 = new Curriculums(4, 4, 0, c44);
+            Curriculums cur44 = new Curriculums(Week.Thursday.getValue(),
+                    Lessions.Afternoon2.getValue(), 0, c44);
             getCurriculumsDao().create(cur44);
 
             Academys academy = new Academys("沧州师范学院全校课表(按班级)", "数学系", 2014, 2015, 0);
