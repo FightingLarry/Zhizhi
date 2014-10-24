@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="main">#db4437</color>
+    <color name="bg">#e5e5e5</color>
+    <color name="white">#ffffff</color>
+    <color name="card_bg">@color/white</color>
     <color name="yellow">#ffc614</color>
     <color name="gray">#e7e7e7</color>
     <color name="hint_gray">#cccccc</color>
-    <color name="white">#ffffffff</color>
     <color name="black">#333333</color>
-    <color name="bg">#ffffff</color>
     <color name="bg_gray">#f7f7f7</color>
     <color name="red">#da372a</color>
     <color name="dark_gray">#a19992</color>

@@ -5,15 +5,20 @@
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.        -->
+        <item name="android:windowContentOverlay">@null</item>
+       <item name="android:windowBackground">@color/main</item>
     </style>
-
+   
+    
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+        <item name="actionBarStyle">@style/ActionBar.Solid.Actionbar</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+     <style name="ActionBar.Solid.Actionbar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/main</item>
+        <item name="backgroundStacked">@color/main</item>
+        <item name="backgroundSplit">@color/main</item>
     </style>
 
     <style name="text_normal">
