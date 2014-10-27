@@ -1,27 +1,45 @@
 package me.zhizhi.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import me.zhizhi.adapter.row.ClassesRow;
+import me.zhizhi.adapter.row.CurriculumsRow;
 import me.zhizhi.db.entity.Classes;
+import me.zhizhi.db.helper.DatabaseHelper;
 import me.zhizhi.utils.CollectionUtils;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ClassesAdapter extends AbstractAdapter<Classes> {
+public class CurriculumsAdapter extends AbstractAdapter<Classes> {
+
+    private Context mContext;
+
+    private View mHead;
+
+    private DatabaseHelper mDatabaseHelper;
+
+    public CurriculumsAdapter(Context context, View head, DatabaseHelper databaseHelper) {
+        this.mContext = context;
+        this.mHead = head;
+        this.mDatabaseHelper = databaseHelper;
+
+        if (mList == null) {
+            mList = new ArrayList<Classes>();
+        }
+    }
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = ClassesRow.newView(mContext, mHead);
+            convertView = CurriculumsRow.newView(mContext, mHead);
         }
-        ClassesRow.bindView(convertView, mList.get(position), mDatabaseHelper);
+        CurriculumsRow.bindView(convertView, mList.get(position), mDatabaseHelper);
 
         return convertView;
     }

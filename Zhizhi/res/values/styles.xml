@@ -2,20 +2,20 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <item name="android:windowContentOverlay">@null</item>
-       <item name="android:windowBackground">@color/main</item>
+        <item name="android:windowBackground">@color/main</item>
     </style>
-   
-    
+
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="actionBarStyle">@style/ActionBar.Solid.Actionbar</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-     <style name="ActionBar.Solid.Actionbar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+
+    <style name="ActionBar.Solid.Actionbar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="background">@color/main</item>
         <item name="backgroundStacked">@color/main</item>
         <item name="backgroundSplit">@color/main</item>
@@ -34,7 +34,7 @@
     <style name="text_curr_week" parent="text_curr_week_ceil">
         <item name="android:textColor">@color/red</item>
     </style>
-    
+
     <style name="text_title" parent="text_normal">
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
@@ -46,6 +46,28 @@
         <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textSize">@dimen/textsize.normal</item>
         <item name="android:singleLine">false</item>
+    </style>
+
+    <style name="red_circle">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">none</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textsize.large</item>
+        <item name="android:background">@drawable/red_circle_bg</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_class_curr_ceil" parent="text_normal">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/ceil_bg</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="text_class_curr_ceil_head" parent="text_class_curr_ceil">
+        <item name="android:gravity">center</item>
+        <item name="android:background">null</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
 </resources>

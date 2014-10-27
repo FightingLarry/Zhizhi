@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/gap.litle"
+    android:background="@drawable/card_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/gap.normal" >
+
+        <TextView
+            android:id="@id/item_title"
+            style="@style/red_circle"
+            android:text="数" />
+
+        <TextView
+            android:id="@id/item_content"
+            style="@style/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="数学班1班" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/gap.litle"
+        android:paddingLeft="@dimen/gap.litle"
+        android:paddingRight="@dimen/gap.litle" >
+
+        <TextView
+            style="@style/text_class_curr_ceil_head"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/monday" />
+
+        <TextView
+            style="@style/text_class_curr_ceil_head"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/tuesday" />
+
+        <TextView
+            style="@style/text_class_curr_ceil_head"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/wednesday" />
+
+        <TextView
+            style="@style/text_class_curr_ceil_head"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/thursday" />
+
+        <TextView
+            style="@style/text_class_curr_ceil_head"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/friday" />
+    </LinearLayout>
+
+    <include layout="@layout/row_class_curriculun" />
+
+    <include layout="@layout/row_class_curriculun" />
+
+    <include layout="@layout/row_class_curriculun" />
+
+    <include layout="@layout/row_class_curriculun" />
+
+    <include layout="@layout/row_class_curriculun" />
+
+</LinearLayout>

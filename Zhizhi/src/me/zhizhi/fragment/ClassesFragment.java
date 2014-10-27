@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import me.zhizhi.R;
-import me.zhizhi.adapter.ClassesAdapter;
+import me.zhizhi.adapter.CurriculumsAdapter;
 import me.zhizhi.db.entity.Classes;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +15,7 @@ public class ClassesFragment extends BaseFragment {
 
     private Dao<Classes, Integer> mClassessDao;
 
-    private ClassesAdapter mAdapter;
+    private CurriculumsAdapter mAdapter;
 
     public static ClassesFragment newInstance() {
         ClassesFragment fragment = new ClassesFragment();
@@ -42,7 +42,7 @@ public class ClassesFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_main;
+        return R.layout.fragment_class;
     }
 
     //	@Override

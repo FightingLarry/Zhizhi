@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import me.zhizhi.R;
-import me.zhizhi.adapter.ClassesAdapter;
+import me.zhizhi.adapter.CurriculumsAdapter;
 import me.zhizhi.db.entity.Academys;
 import me.zhizhi.db.entity.Classes;
 import me.zhizhi.db.entity.Curriculums;
@@ -15,7 +15,7 @@ import com.j256.ormlite.dao.ForeignCollection;
 
 public class AcademysFragment extends BaseFragment {
 
-    private ClassesAdapter mAdapter;
+    private CurriculumsAdapter mAdapter;
 
     public static AcademysFragment newInstance() {
         AcademysFragment fragment = new AcademysFragment();

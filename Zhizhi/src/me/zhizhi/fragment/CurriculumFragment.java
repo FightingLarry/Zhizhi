@@ -6,7 +6,7 @@ import java.util.List;
 
 import me.zhizhi.R;
 import me.zhizhi.adapter.AbstractAdapter;
-import me.zhizhi.adapter.ClassesAdapter;
+import me.zhizhi.adapter.CurriculumsAdapter;
 import me.zhizhi.db.entity.Academys;
 import me.zhizhi.db.entity.Classes;
 import me.zhizhi.widget.HScrollView;
@@ -20,7 +20,7 @@ import com.j256.ormlite.dao.ForeignCollection;
 
 public class CurriculumFragment extends BaseFragment {
 
-    private ClassesAdapter mAdapter;
+    private CurriculumsAdapter mAdapter;
 
     private List<Classes> mClassList;
 
@@ -81,7 +81,7 @@ public class CurriculumFragment extends BaseFragment {
     @Override
     protected AbstractAdapter<Classes> getAdapter() {
         if (mAdapter == null) {
-            mAdapter = new ClassesAdapter(mActivity, mHead, getDatabaseHelper());
+            mAdapter = new CurriculumsAdapter(mActivity, mHead, getDatabaseHelper());
         }
         return mAdapter;
     }
