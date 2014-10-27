@@ -10,9 +10,8 @@ import me.zhizhi.db.entity.Classes;
 import me.zhizhi.db.entity.Courses;
 import me.zhizhi.db.entity.Curriculums;
 import me.zhizhi.db.helper.DatabaseHelper;
-import me.zhizhi.widget.HScrollView;
-import me.zhizhi.widget.HScrollView.OnScrollChangedListener;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,21 +19,18 @@ import android.widget.TextView;
 
 public class ClassesRow {
 
-    public static View newView(Context context, View head) {
-        View view = LayoutInflater.from(context).inflate(R.layout.row_curr, null);
+    public static View newView(Context context) {
+        View view = LayoutInflater.from(context).inflate(R.layout.row_class, null);
         ViewHolder holder = new ViewHolder();
-        HScrollView listScrollView = (HScrollView) view.findViewById(R.id.h_scrollview);
-
-        HScrollView headScrollView = (HScrollView) head.findViewById(R.id.h_scrollview_head);
-        headScrollView.AddOnScrollChangedListener(new OnScrollChangedListenerImp(listScrollView));
 
         holder.mItemContainer = view;
-        holder.mClassView = (TextView) view.findViewById(R.id.id_class);
-        View mon = view.findViewById(R.id.week_mon);
-        View tue = view.findViewById(R.id.week_tue);
-        View wed = view.findViewById(R.id.week_wed);
-        View thu = view.findViewById(R.id.week_thu);
-        View fri = view.findViewById(R.id.week_fri);
+        holder.mIcon = (TextView) view.findViewById(R.id.item_icon);
+        holder.mTitle = (TextView) view.findViewById(R.id.item_title);
+        View mon = view.findViewById(R.id.morning1);
+        View tue = view.findViewById(R.id.morning2);
+        View wed = view.findViewById(R.id.afternoon1);
+        View thu = view.findViewById(R.id.afternoon2);
+        View fri = view.findViewById(R.id.night);
 
         holder.mCeil11 = (TextView) mon.findViewById(R.id.cell1);
         holder.mCeil11.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Morning1));
@@ -95,20 +91,6 @@ public class ClassesRow {
         return view;
     }
 
-    private static class OnScrollChangedListenerImp implements OnScrollChangedListener {
-
-        HScrollView mScrollViewArg;
-
-        public OnScrollChangedListenerImp(HScrollView scrollViewar) {
-            mScrollViewArg = scrollViewar;
-        }
-
-        @Override
-        public void onScrollChanged(int l, int t, int oldl, int oldt) {
-            mScrollViewArg.smoothScrollTo(l, t);
-        }
-    };
-
     private static class OnCeilClick implements OnClickListener {
 
         private Week mWeek;
@@ -132,8 +114,11 @@ public class ClassesRow {
             return;
         }
         ViewHolder holder = (ViewHolder) view.getTag();
-
-        holder.mClassView.setText(_class.getClassName() + "(" + _class.getStudents() + ")");
+        String name = _class.getClassName();
+        holder.mTitle.setText(name);
+        if (!TextUtils.isEmpty(name)) {
+            holder.mIcon.setText(name.subSequence(0, 1));
+        }
         List<Curriculums> curriculumsList = null;
         try {
             curriculumsList = databaseHelper.getCurriculumsList(_class);
@@ -217,7 +202,9 @@ public class ClassesRow {
 
         public View mItemContainer;
 
-        public TextView mClassView;
+        public TextView mIcon;
+
+        public TextView mTitle;
 
         public TextView mCeil11;
 

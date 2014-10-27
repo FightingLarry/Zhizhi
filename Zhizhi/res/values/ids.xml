@@ -7,6 +7,7 @@
     <item name="item_root" type="id"/>
     <item name="item_title" type="id"/>
     <item name="item_content" type="id"/>
+    <item name="item_icon" type="id"/>
     <item name="cell1" type="id"/>
     <item name="cell2" type="id"/>
     <item name="cell3" type="id"/>
@@ -22,4 +23,9 @@
     <item name="h_scrollview" type="id"/>
     <item name="id_class" type="id"/>
     <item name="h_scrollview_head" type="id"/>
+    <item name="morning1" type="id"/>
+    <item name="morning2" type="id"/>
+    <item name="afternoon1" type="id"/>
+    <item name="afternoon2" type="id"/>
+    <item name="night" type="id"/>
 </resources>

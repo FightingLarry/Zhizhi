@@ -1,21 +1,24 @@
 package me.zhizhi.fragment;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import me.zhizhi.R;
-import me.zhizhi.adapter.CurriculumsAdapter;
+import me.zhizhi.adapter.AbstractAdapter;
+import me.zhizhi.adapter.ClassesAdapter;
+import me.zhizhi.db.entity.Academys;
 import me.zhizhi.db.entity.Classes;
 import android.os.Bundle;
 import android.view.View;
 
-import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.ForeignCollection;
 
 public class ClassesFragment extends BaseFragment {
 
-    private Dao<Classes, Integer> mClassessDao;
+    private ClassesAdapter mAdapter;
 
-    private CurriculumsAdapter mAdapter;
+    private List<Classes> mClassList;
 
     public static ClassesFragment newInstance() {
         ClassesFragment fragment = new ClassesFragment();
@@ -25,19 +28,26 @@ public class ClassesFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        try {
+            List<Academys> list = getDatabaseHelper().getAcademysDao().queryForAll();
+            Academys academy = list.get(0);
+            if (academy != null) {
+                ForeignCollection<Classes> classes = academy.getClasses();
+                mClassList = new ArrayList<Classes>();
+                for (Classes c : classes) {
+                    mClassList.add(c);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        try {
-            // mClassessDao = getDatabaseHelper().getClassesDao();
-            List<Classes> list = mClassessDao.queryForAll();
-            //            getAdapter().addItem(list);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        getAdapter().addItem(mClassList);
+
     }
 
     @Override
@@ -45,12 +55,12 @@ public class ClassesFragment extends BaseFragment {
         return R.layout.fragment_class;
     }
 
-    //	@Override
-    //	protected AbstractAdapter<Classes> getAdapter() {
-    //		if (mAdapter == null) {
-    //			mAdapter = new ClassesAdapter(mActivity);
-    //		}
-    //		return mAdapter;
-    //	}
+    @Override
+    protected AbstractAdapter<Classes> getAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new ClassesAdapter(mActivity, getDatabaseHelper());
+        }
+        return mAdapter;
+    }
 
 }

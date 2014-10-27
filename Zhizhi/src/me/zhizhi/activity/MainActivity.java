@@ -1,7 +1,7 @@
 package me.zhizhi.activity;
 
 import me.zhizhi.R;
-import me.zhizhi.fragment.CurriculumFragment;
+import me.zhizhi.fragment.ClassesFragment;
 import me.zhizhi.fragment.NavigationDrawerFragment;
 import me.zhizhi.fragment.TeachersFragment;
 import android.os.Bundle;
@@ -47,7 +47,7 @@ public class MainActivity extends ActionBarActivity implements
         switch (position) {
             case 0:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, CurriculumFragment.newInstance()).commit();
+                        .replace(R.id.container, ClassesFragment.newInstance()).commit();
                 break;
             case 1:
                 fragmentManager.beginTransaction()
