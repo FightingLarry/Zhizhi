@@ -17,22 +17,22 @@ public class ClassesAdapter extends AbstractAdapter<Classes> {
     private DatabaseHelper mDatabaseHelper;
 
     public ClassesAdapter(Context context, DatabaseHelper databaseHelper) {
+        super();
         this.mContext = context;
         this.mDatabaseHelper = databaseHelper;
     }
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = ClassesRow.newView(mContext);
+            convertView = ClassesRow.newView(mContext, false);
         }
-        ClassesRow.bindView(convertView, mList.get(position), mDatabaseHelper);
+        ClassesRow.bindView(convertView, mList.get(position), mDatabaseHelper, position);
 
         return convertView;
     }

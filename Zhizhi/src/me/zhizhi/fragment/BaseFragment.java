@@ -43,7 +43,7 @@ public class BaseFragment extends Fragment {
             initView(mainView);
 
             if (mJazzyListView != null) {
-                mJazzyListView.setTransitionEffect(JazzyHelper.FAN);
+                mJazzyListView.setTransitionEffect(JazzyHelper.SLIDE_IN);
                 if (getAdapter() != null) {
                     mJazzyListView.setAdapter(getAdapter());
                 }

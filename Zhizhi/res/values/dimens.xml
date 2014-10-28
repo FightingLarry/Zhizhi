@@ -26,6 +26,7 @@
     <dimen name="textsize.small">12sp</dimen>
     <dimen name="textsize.normal">14sp</dimen>
     <dimen name="textsize.title">16sp</dimen>
-    <dimen name="textsize.large">18sp</dimen>
+    <dimen name="textsize.large">20sp</dimen>
+    <dimen name="textsize.hurge">26sp</dimen>
 
 </resources>

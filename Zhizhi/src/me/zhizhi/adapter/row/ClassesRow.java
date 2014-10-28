@@ -12,6 +12,7 @@ import me.zhizhi.db.entity.Curriculums;
 import me.zhizhi.db.helper.DatabaseHelper;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,13 +20,16 @@ import android.widget.TextView;
 
 public class ClassesRow {
 
-    public static View newView(Context context) {
+    private static final String TAG = "ClassesRow";
+
+    public static View newView(Context context, boolean isNeedClick) {
         View view = LayoutInflater.from(context).inflate(R.layout.row_class, null);
         ViewHolder holder = new ViewHolder();
 
         holder.mItemContainer = view;
         holder.mIcon = (TextView) view.findViewById(R.id.item_icon);
         holder.mTitle = (TextView) view.findViewById(R.id.item_title);
+
         View mon = view.findViewById(R.id.morning1);
         View tue = view.findViewById(R.id.morning2);
         View wed = view.findViewById(R.id.afternoon1);
@@ -33,59 +37,67 @@ public class ClassesRow {
         View fri = view.findViewById(R.id.night);
 
         holder.mCeil11 = (TextView) mon.findViewById(R.id.cell1);
-        holder.mCeil11.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Morning1));
         holder.mCeil12 = (TextView) mon.findViewById(R.id.cell2);
-        holder.mCeil12.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Morning2));
         holder.mCeil13 = (TextView) mon.findViewById(R.id.cell3);
-        holder.mCeil13.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Afternoon1));
         holder.mCeil14 = (TextView) mon.findViewById(R.id.cell4);
-        holder.mCeil14.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Afternoon2));
         holder.mCeil15 = (TextView) mon.findViewById(R.id.cell5);
-        holder.mCeil15.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Night));
 
         holder.mCeil21 = (TextView) tue.findViewById(R.id.cell1);
-        holder.mCeil21.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Morning1));
         holder.mCeil22 = (TextView) tue.findViewById(R.id.cell2);
-        holder.mCeil22.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Morning2));
         holder.mCeil23 = (TextView) tue.findViewById(R.id.cell3);
-        holder.mCeil23.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Afternoon1));
         holder.mCeil24 = (TextView) tue.findViewById(R.id.cell4);
-        holder.mCeil24.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Afternoon2));
         holder.mCeil25 = (TextView) tue.findViewById(R.id.cell5);
-        holder.mCeil25.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Night));
 
         holder.mCeil31 = (TextView) wed.findViewById(R.id.cell1);
-        holder.mCeil31.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Morning1));
         holder.mCeil32 = (TextView) wed.findViewById(R.id.cell2);
-        holder.mCeil32.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Morning2));
         holder.mCeil33 = (TextView) wed.findViewById(R.id.cell3);
-        holder.mCeil33.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Afternoon1));
         holder.mCeil34 = (TextView) wed.findViewById(R.id.cell4);
-        holder.mCeil34.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Afternoon2));
         holder.mCeil35 = (TextView) wed.findViewById(R.id.cell5);
-        holder.mCeil35.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Night));
 
         holder.mCeil41 = (TextView) thu.findViewById(R.id.cell1);
-        holder.mCeil41.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Morning1));
         holder.mCeil42 = (TextView) thu.findViewById(R.id.cell2);
-        holder.mCeil42.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Morning2));
         holder.mCeil43 = (TextView) thu.findViewById(R.id.cell3);
-        holder.mCeil43.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Afternoon1));
         holder.mCeil44 = (TextView) thu.findViewById(R.id.cell4);
-        holder.mCeil44.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Afternoon2));
         holder.mCeil45 = (TextView) thu.findViewById(R.id.cell5);
-        holder.mCeil45.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Night));
 
         holder.mCeil51 = (TextView) fri.findViewById(R.id.cell1);
-        holder.mCeil51.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Morning1));
         holder.mCeil52 = (TextView) fri.findViewById(R.id.cell2);
-        holder.mCeil52.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Morning2));
         holder.mCeil53 = (TextView) fri.findViewById(R.id.cell3);
-        holder.mCeil53.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Afternoon1));
         holder.mCeil54 = (TextView) fri.findViewById(R.id.cell4);
-        holder.mCeil54.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Afternoon2));
         holder.mCeil55 = (TextView) fri.findViewById(R.id.cell5);
-        holder.mCeil55.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Night));
+
+        if (isNeedClick) {
+            holder.mCeil11.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Morning1));
+            holder.mCeil12.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Morning2));
+            holder.mCeil13.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Afternoon1));
+            holder.mCeil14.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Afternoon2));
+            holder.mCeil15.setOnClickListener(new OnCeilClick(Week.Monday, Lessions.Night));
+
+            holder.mCeil21.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Morning1));
+            holder.mCeil22.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Morning2));
+            holder.mCeil23.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Afternoon1));
+            holder.mCeil24.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Afternoon2));
+            holder.mCeil25.setOnClickListener(new OnCeilClick(Week.Tuesday, Lessions.Night));
+
+            holder.mCeil31.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Morning1));
+            holder.mCeil32.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Morning2));
+            holder.mCeil33.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Afternoon1));
+            holder.mCeil34.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Afternoon2));
+            holder.mCeil35.setOnClickListener(new OnCeilClick(Week.Wednesday, Lessions.Night));
+
+            holder.mCeil41.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Morning1));
+            holder.mCeil42.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Morning2));
+            holder.mCeil43.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Afternoon1));
+            holder.mCeil44.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Afternoon2));
+            holder.mCeil45.setOnClickListener(new OnCeilClick(Week.Thursday, Lessions.Night));
+
+            holder.mCeil51.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Morning1));
+            holder.mCeil52.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Morning2));
+            holder.mCeil53.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Afternoon1));
+            holder.mCeil54.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Afternoon2));
+            holder.mCeil55.setOnClickListener(new OnCeilClick(Week.Friday, Lessions.Night));
+        }
+
         view.setTag(holder);
 
         return view;
@@ -109,15 +121,39 @@ public class ClassesRow {
         }
     };
 
-    public static void bindView(View view, final Classes _class, DatabaseHelper databaseHelper) {
+    public static void bindView(View view, final Classes _class, DatabaseHelper databaseHelper,
+            int position) {
         if (_class == null) {
             return;
         }
         ViewHolder holder = (ViewHolder) view.getTag();
         String name = _class.getClassName();
-        holder.mTitle.setText(name);
+
+        Log.w(TAG, "class=" + _class.getClassID());
+
+        holder.mTitle.setText(name + " (" + _class.getStudents() + ")");
         if (!TextUtils.isEmpty(name)) {
-            holder.mIcon.setText(name.subSequence(0, 1));
+            holder.mIcon.setText(name.subSequence(3, 4));
+            int resId = R.drawable.deep_blue_circle_bg;
+            switch (position % 5) {
+                case 1:
+                    resId = R.drawable.grass_blue_circle_bg;
+                    break;
+                case 2:
+                    resId = R.drawable.yellow_circle_bg;
+                    break;
+                case 3:
+                    resId = R.drawable.light_blue_circle_bg;
+                    break;
+                case 4:
+                    resId = R.drawable.light_green_circle_bg;
+                    break;
+
+                default:
+                    resId = R.drawable.deep_blue_circle_bg;
+                    break;
+            }
+            holder.mIcon.setBackgroundResource(resId);
         }
         List<Curriculums> curriculumsList = null;
         try {
@@ -126,12 +162,43 @@ public class ClassesRow {
             e.printStackTrace();
         }
 
+        holder.mCeil11.setText("");
+        holder.mCeil12.setText("");
+        holder.mCeil13.setText("");
+        holder.mCeil14.setText("");
+        holder.mCeil15.setText("");
+
+        holder.mCeil21.setText("");
+        holder.mCeil22.setText("");
+        holder.mCeil23.setText("");
+        holder.mCeil24.setText("");
+        holder.mCeil25.setText("");
+
+        holder.mCeil31.setText("");
+        holder.mCeil32.setText("");
+        holder.mCeil33.setText("");
+        holder.mCeil34.setText("");
+        holder.mCeil35.setText("");
+
+        holder.mCeil41.setText("");
+        holder.mCeil42.setText("");
+        holder.mCeil43.setText("");
+        holder.mCeil44.setText("");
+        holder.mCeil45.setText("");
+
+        holder.mCeil51.setText("");
+        holder.mCeil52.setText("");
+        holder.mCeil53.setText("");
+        holder.mCeil54.setText("");
+        holder.mCeil55.setText("");
+
         if (curriculumsList == null || curriculumsList.size() == 0) {
             return;
         }
 
         for (Curriculums c : curriculumsList) {
             Courses course = c.getCourse();
+
             if (c.getWeek() == Week.Monday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {
                     holder.mCeil11.setText(course.getCourseName());

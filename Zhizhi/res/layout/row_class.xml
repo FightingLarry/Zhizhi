@@ -1,103 +1,111 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/gap.litle"
-    android:background="@drawable/card_bg"
-    android:orientation="vertical" >
+    android:paddingTop="@dimen/gap.small"
+    android:paddingRight="@dimen/gap.small"
+    android:paddingLeft="@dimen/gap.normal"
+     android:paddingBottom="@dimen/gap.litle" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/gap.normal" >
+        android:background="@drawable/card_bg"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@id/item_icon"
-            style="@style/red_circle" />
-
-        <TextView
-            android:id="@id/item_title"
-            style="@style/text_title"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/gap.litle"
-        android:paddingLeft="@dimen/gap.litle"
-        android:paddingRight="@dimen/gap.litle" >
-
-        <TextView
-            style="@style/text_class_curr_ceil_head"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/monday" />
-
-        <TextView
-            style="@style/text_class_curr_ceil_head"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/tuesday" />
-
-        <TextView
-            style="@style/text_class_curr_ceil_head"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/wednesday" />
-
-        <TextView
-            style="@style/text_class_curr_ceil_head"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/thursday" />
-
-        <TextView
-            style="@style/text_class_curr_ceil_head"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/friday" />
-    </LinearLayout>
-
-    <include
-        android:id="@id/morning1"
-        layout="@layout/row_class_curriculun" />
-
-    <include
-        android:id="@id/morning2"
-        layout="@layout/row_class_curriculun" />
-
-    <include
-        android:id="@id/afternoon1"
-        layout="@layout/row_class_curriculun" />
-
-    <include
-        android:id="@id/afternoon2"
-        layout="@layout/row_class_curriculun" />
-
-    <include
-        android:id="@id/night"
-        layout="@layout/row_class_curriculun" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/gap.litle" >
-
-        <Button
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="分享" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/gap.large" >
 
-        <Button
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@id/item_icon"
+                style="@style/red_circle" />
+
+            <TextView
+                android:id="@id/item_title"
+                style="@style/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="分享" />
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/gap.litle"
+            android:paddingLeft="@dimen/gap.litle"
+            android:paddingRight="@dimen/gap.litle" >
+
+            <TextView
+                style="@style/text_class_curr_ceil_head"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/monday" />
+
+            <TextView
+                style="@style/text_class_curr_ceil_head"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/tuesday" />
+
+            <TextView
+                style="@style/text_class_curr_ceil_head"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/wednesday" />
+
+            <TextView
+                style="@style/text_class_curr_ceil_head"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/thursday" />
+
+            <TextView
+                style="@style/text_class_curr_ceil_head"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/friday" />
+        </LinearLayout>
+
+        <include
+            android:id="@id/morning1"
+            layout="@layout/row_class_curriculun" />
+
+        <include
+            android:id="@id/morning2"
+            layout="@layout/row_class_curriculun" />
+
+        <include
+            android:id="@id/afternoon1"
+            layout="@layout/row_class_curriculun" />
+
+        <include
+            android:id="@id/afternoon2"
+            layout="@layout/row_class_curriculun" />
+
+        <include
+            android:id="@id/night"
+            layout="@layout/row_class_curriculun" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/gap.litle" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分享" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分享" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>

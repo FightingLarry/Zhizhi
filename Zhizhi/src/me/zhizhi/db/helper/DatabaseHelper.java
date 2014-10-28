@@ -89,6 +89,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Classes b12 = new Classes("B12数应", 55, academy);
             getClassesDao().create(b12);
 
+            Classes z12_1 = new Classes("Z12数教-1", 44, academy);
+            getClassesDao().create(z12_1);
+
+            Classes z12_2 = new Classes("Z12数教-2", 39, academy);
+            getClassesDao().create(z12_2);
+
+            Classes z12 = new Classes("Z12金融", 33, academy);
+            getClassesDao().create(z12);
+
             ClassesCurriculums cc_b11_1_cur44 = new ClassesCurriculums(b11_1, cur44);
             getClassesCurriculumsDao().create(cc_b11_1_cur44);
 

@@ -1,5 +1,6 @@
 package me.zhizhi.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.zhizhi.utils.CollectionUtils;
@@ -14,6 +15,10 @@ public abstract class AbstractAdapter<T> extends BaseAdapter {
     protected LayoutInflater mInflater;
 
     protected List<T> mList;
+
+    public AbstractAdapter() {
+        mList = new ArrayList<T>();
+    }
 
     @Override
     public abstract Object getItem(int position);

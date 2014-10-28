@@ -5,12 +5,17 @@
     <color name="bg">#e5e5e5</color>
     <color name="white">#ffffff</color>
     <color name="card_bg">@color/white</color>
-    <color name="yellow">#ffc614</color>
     <color name="gray">#e7e7e7</color>
     <color name="hint_gray">#cccccc</color>
     <color name="black">#333333</color>
     <color name="bg_gray">#f7f7f7</color>
     <color name="red">#da372a</color>
     <color name="dark_gray">#a19992</color>
+    
+    <color name="deep_blue">#7a50f1</color>
+    <color name="light_blue">#2dccdf</color>
+    <color name="light_green">#42d99f</color>
+    <color name="grass_green">#78d942</color>
+    <color name="yellow">#ffc714</color>
 
 </resources>
