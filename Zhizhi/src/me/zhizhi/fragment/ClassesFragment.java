@@ -63,4 +63,8 @@ public class ClassesFragment extends BaseFragment {
         return mAdapter;
     }
 
+    @Override
+    protected int getActionbarTitle() {
+        return R.string.title_classes;
+    }
 }

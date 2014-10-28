@@ -5,7 +5,6 @@ import me.zhizhi.adapter.AbstractAdapter;
 import me.zhizhi.db.helper.DatabaseHelper;
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.JazzyListView;
 
-public class BaseFragment extends Fragment {
+public class BaseFragment extends ActionbarFragment {
 
     protected Activity mActivity;
 

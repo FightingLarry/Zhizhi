@@ -15,5 +15,11 @@
     <string name="thursday">星期四</string>
     <string name="friday">星期五</string>
     <string name="s_class">班级</string>
+    
+    <string name="title_classes">班级们</string>
+    <string name="title_teacheres">老师们</string>
+    <string name="title_curriculums">课程表</string>
+    <string name="title_courses">课程们</string>
+    <string name="title_classrooms">教室们</string>
 
 </resources>
