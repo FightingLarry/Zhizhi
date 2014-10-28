@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/gap.small"
-    android:paddingRight="@dimen/gap.small"
+    android:paddingBottom="@dimen/gap.litle"
     android:paddingLeft="@dimen/gap.normal"
-     android:paddingBottom="@dimen/gap.litle" >
+    android:paddingRight="@dimen/gap.small"
+    android:paddingTop="@dimen/gap.small" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,18 +93,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/gap.litle" >
+            android:orientation="horizontal" >
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/gap.litle"
+                android:background="@drawable/button_bg"
                 android:text="分享" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="分享" />
+                android:layout_margin="@dimen/gap.litle"
+                android:background="@drawable/button_bg"
+                android:text="打印" />
         </LinearLayout>
     </LinearLayout>
 

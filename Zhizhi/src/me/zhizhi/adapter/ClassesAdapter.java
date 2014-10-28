@@ -30,7 +30,7 @@ public class ClassesAdapter extends AbstractAdapter<Classes> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = ClassesRow.newView(mContext, false);
+            convertView = ClassesRow.newView(mContext, true);
         }
         ClassesRow.bindView(convertView, mList.get(position), mDatabaseHelper, position);
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@id/no_result"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/textsize.normal"
+        android:visibility="gone" />
+
+    <com.twotoasters.jazzylistview.JazzyListView
+        android:id="@id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="0dip"
+        android:drawSelectorOnTop="false"
+        android:fadeScrollbars="true"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:focusable="false"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        android:smoothScrollbar="true" />
+
+</FrameLayout>

@@ -3,13 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-
-    <com.twotoasters.jazzylistview.JazzyListView
-        android:id="@id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@null"
-        android:scrollbars="none"/>
+    <include layout="@layout/fragment_normal_list" />
 
 </RelativeLayout>

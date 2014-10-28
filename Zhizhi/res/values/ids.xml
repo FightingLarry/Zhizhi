@@ -28,4 +28,6 @@
     <item name="afternoon1" type="id"/>
     <item name="afternoon2" type="id"/>
     <item name="night" type="id"/>
+    
+    <item name="no_result" type="id"/>
 </resources>

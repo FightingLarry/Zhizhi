@@ -52,7 +52,7 @@ public class ClassesFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_class;
+        return R.layout.fragment_normal_list;
     }
 
     @Override
