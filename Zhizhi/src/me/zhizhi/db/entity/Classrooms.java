@@ -2,7 +2,9 @@ package me.zhizhi.db.entity;
 
 import java.io.Serializable;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "classrooms")
@@ -16,8 +18,8 @@ public class Classrooms implements Serializable {
     @DatabaseField
     private String classroomName;
 
-    @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private Curriculums curriculums;
+    @ForeignCollectionField
+    private ForeignCollection<Classrooms> classrooms;
 
     public Integer getClassroomID() {
         return classroomID;
@@ -35,21 +37,16 @@ public class Classrooms implements Serializable {
         this.classroomName = classroomName;
     }
 
-    public Curriculums getCurriculums() {
-        return curriculums;
+    public ForeignCollection<Classrooms> getClassrooms() {
+        return classrooms;
     }
 
-    public void setCurriculums(Curriculums curriculums) {
-        this.curriculums = curriculums;
+    public void setClassrooms(ForeignCollection<Classrooms> classrooms) {
+        this.classrooms = classrooms;
     }
 
     public Classrooms() {
         super();
     }
 
-    public Classrooms(String classroomName, Curriculums curriculums) {
-        super();
-        this.classroomName = classroomName;
-        this.curriculums = curriculums;
-    }
 }

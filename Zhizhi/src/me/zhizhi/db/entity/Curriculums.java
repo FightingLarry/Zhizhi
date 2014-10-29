@@ -6,22 +6,13 @@ package me.zhizhi.db.entity;
 
 import java.io.Serializable;
 
-import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * <p>
- * <br/>
+ * 课程安排表,两个班合上一堂课
  * 
- * 课程安排表
- * 
- * @className Curriculums.java<br/>
- * @packageName me.zhizhi.db.entity<br/>
  * @date 2014年10月21日 下午11:34:19<br/>
- *       </p>
- * 
  * @author liuyc
  * @version v1.0.0
  */
@@ -50,14 +41,8 @@ public class Curriculums implements Serializable {
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Courses course;
 
-    // /**
-    // * 两个班合上一堂课
-    // */
-    // @ForeignCollectionField
-    // private ForeignCollection<Classes> classes;
-
-    @ForeignCollectionField
-    private ForeignCollection<Classrooms> classrooms;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    private Curriculums curriculums;
 
     public int getCurriculumID() {
         return curriculumID;
@@ -99,12 +84,12 @@ public class Curriculums implements Serializable {
         this.course = course;
     }
 
-    public ForeignCollection<Classrooms> getClassrooms() {
-        return classrooms;
+    public Curriculums getCurriculums() {
+        return curriculums;
     }
 
-    public void setClassrooms(ForeignCollection<Classrooms> classrooms) {
-        this.classrooms = classrooms;
+    public void setCurriculums(Curriculums curriculums) {
+        this.curriculums = curriculums;
     }
 
     public Curriculums() {
