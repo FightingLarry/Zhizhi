@@ -8,5 +8,9 @@
         <item>课程们</item>
         <item>教室们</item>
     </string-array>
+    <string-array name="arr_cycle">
+        <item>单周</item>
+        <item>双周</item>
+    </string-array>
 
 </resources>

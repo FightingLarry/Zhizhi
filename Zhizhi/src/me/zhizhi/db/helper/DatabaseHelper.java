@@ -155,8 +155,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
     private PreparedQuery<Curriculums> makeCurriculums() throws SQLException {
-        //        RuntimeExceptionDao<userproject, integer=""> userProjectDao= getSimpleDataUserProjectDao();
-        //        RuntimeExceptionDao<user, integer=""> userDao = getSimpleDataUserDao();
         QueryBuilder<ClassesCurriculums, Integer> ccQueryBuilder = getClassesCurriculumsDao()
                 .queryBuilder();
         ccQueryBuilder.selectColumns(Curriculums.FOREIGN_ID);

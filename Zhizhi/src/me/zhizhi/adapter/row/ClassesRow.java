@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import me.zhizhi.R;
+import me.zhizhi.db.constants.Cycle;
 import me.zhizhi.db.constants.Lessions;
 import me.zhizhi.db.constants.Week;
 import me.zhizhi.db.entity.Classes;
@@ -34,41 +35,41 @@ public class ClassesRow {
         holder.mIcon = (TextView) view.findViewById(R.id.item_icon);
         holder.mTitle = (TextView) view.findViewById(R.id.item_title);
 
-        View mon = view.findViewById(R.id.morning1);
-        View tue = view.findViewById(R.id.morning2);
-        View wed = view.findViewById(R.id.afternoon1);
-        View thu = view.findViewById(R.id.afternoon2);
-        View fri = view.findViewById(R.id.night);
+        View t1 = view.findViewById(R.id.morning1);
+        View t2 = view.findViewById(R.id.morning2);
+        View t3 = view.findViewById(R.id.afternoon1);
+        View t4 = view.findViewById(R.id.afternoon2);
+        View t5 = view.findViewById(R.id.night);
 
-        holder.mCeil11 = (TextView) mon.findViewById(R.id.cell1);
-        holder.mCeil12 = (TextView) mon.findViewById(R.id.cell2);
-        holder.mCeil13 = (TextView) mon.findViewById(R.id.cell3);
-        holder.mCeil14 = (TextView) mon.findViewById(R.id.cell4);
-        holder.mCeil15 = (TextView) mon.findViewById(R.id.cell5);
+        holder.mCeil11 = (TextView) t1.findViewById(R.id.cell1);
+        holder.mCeil12 = (TextView) t2.findViewById(R.id.cell1);
+        holder.mCeil13 = (TextView) t3.findViewById(R.id.cell1);
+        holder.mCeil14 = (TextView) t4.findViewById(R.id.cell1);
+        holder.mCeil15 = (TextView) t5.findViewById(R.id.cell1);
 
-        holder.mCeil21 = (TextView) tue.findViewById(R.id.cell1);
-        holder.mCeil22 = (TextView) tue.findViewById(R.id.cell2);
-        holder.mCeil23 = (TextView) tue.findViewById(R.id.cell3);
-        holder.mCeil24 = (TextView) tue.findViewById(R.id.cell4);
-        holder.mCeil25 = (TextView) tue.findViewById(R.id.cell5);
+        holder.mCeil21 = (TextView) t1.findViewById(R.id.cell2);
+        holder.mCeil22 = (TextView) t2.findViewById(R.id.cell2);
+        holder.mCeil23 = (TextView) t3.findViewById(R.id.cell2);
+        holder.mCeil24 = (TextView) t4.findViewById(R.id.cell2);
+        holder.mCeil25 = (TextView) t5.findViewById(R.id.cell2);
 
-        holder.mCeil31 = (TextView) wed.findViewById(R.id.cell1);
-        holder.mCeil32 = (TextView) wed.findViewById(R.id.cell2);
-        holder.mCeil33 = (TextView) wed.findViewById(R.id.cell3);
-        holder.mCeil34 = (TextView) wed.findViewById(R.id.cell4);
-        holder.mCeil35 = (TextView) wed.findViewById(R.id.cell5);
+        holder.mCeil31 = (TextView) t1.findViewById(R.id.cell3);
+        holder.mCeil32 = (TextView) t2.findViewById(R.id.cell3);
+        holder.mCeil33 = (TextView) t3.findViewById(R.id.cell3);
+        holder.mCeil34 = (TextView) t4.findViewById(R.id.cell3);
+        holder.mCeil35 = (TextView) t5.findViewById(R.id.cell3);
 
-        holder.mCeil41 = (TextView) thu.findViewById(R.id.cell1);
-        holder.mCeil42 = (TextView) thu.findViewById(R.id.cell2);
-        holder.mCeil43 = (TextView) thu.findViewById(R.id.cell3);
-        holder.mCeil44 = (TextView) thu.findViewById(R.id.cell4);
-        holder.mCeil45 = (TextView) thu.findViewById(R.id.cell5);
+        holder.mCeil41 = (TextView) t1.findViewById(R.id.cell4);
+        holder.mCeil42 = (TextView) t2.findViewById(R.id.cell4);
+        holder.mCeil43 = (TextView) t3.findViewById(R.id.cell4);
+        holder.mCeil44 = (TextView) t4.findViewById(R.id.cell4);
+        holder.mCeil45 = (TextView) t5.findViewById(R.id.cell4);
 
-        holder.mCeil51 = (TextView) fri.findViewById(R.id.cell1);
-        holder.mCeil52 = (TextView) fri.findViewById(R.id.cell2);
-        holder.mCeil53 = (TextView) fri.findViewById(R.id.cell3);
-        holder.mCeil54 = (TextView) fri.findViewById(R.id.cell4);
-        holder.mCeil55 = (TextView) fri.findViewById(R.id.cell5);
+        holder.mCeil51 = (TextView) t1.findViewById(R.id.cell5);
+        holder.mCeil52 = (TextView) t2.findViewById(R.id.cell5);
+        holder.mCeil53 = (TextView) t3.findViewById(R.id.cell5);
+        holder.mCeil54 = (TextView) t4.findViewById(R.id.cell5);
+        holder.mCeil55 = (TextView) t5.findViewById(R.id.cell5);
 
         view.setTag(holder);
 
@@ -228,66 +229,75 @@ public class ClassesRow {
 
         for (Curriculums c : curriculumsList) {
             Courses course = c.getCourse();
-
+            if (course == null) {
+                break;
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append(course.getCourseName());
+            if (c.getCycle() == Cycle.SingleWeekly.getValue()
+                    || c.getCycle() == Cycle.Biweekly.getValue()) {
+                String[] cycleArray = context.getResources().getStringArray(R.array.arr_cycle);
+                sb.append("(").append(cycleArray[c.getCycle() - 1]).append(")");
+            }
             if (c.getWeek() == Week.Monday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {
-                    holder.mCeil11.setText(course.getCourseName());
+                    holder.mCeil11.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Morning2.getValue()) {
-                    holder.mCeil12.setText(course.getCourseName());
+                    holder.mCeil12.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon1.getValue()) {
-                    holder.mCeil13.setText(course.getCourseName());
+                    holder.mCeil13.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon2.getValue()) {
-                    holder.mCeil14.setText(course.getCourseName());
+                    holder.mCeil14.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Night.getValue()) {
-                    holder.mCeil15.setText(course.getCourseName());
+                    holder.mCeil15.setText(sb.toString());
                 }
             } else if (c.getWeek() == Week.Tuesday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {
-                    holder.mCeil21.setText(course.getCourseName());
+                    holder.mCeil21.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Morning2.getValue()) {
-                    holder.mCeil22.setText(course.getCourseName());
+                    holder.mCeil22.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon1.getValue()) {
-                    holder.mCeil23.setText(course.getCourseName());
+                    holder.mCeil23.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon2.getValue()) {
-                    holder.mCeil24.setText(course.getCourseName());
+                    holder.mCeil24.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Night.getValue()) {
-                    holder.mCeil25.setText(course.getCourseName());
+                    holder.mCeil25.setText(sb.toString());
                 }
             } else if (c.getWeek() == Week.Wednesday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {
-                    holder.mCeil31.setText(course.getCourseName());
+                    holder.mCeil31.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Morning2.getValue()) {
-                    holder.mCeil32.setText(course.getCourseName());
+                    holder.mCeil32.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon1.getValue()) {
-                    holder.mCeil33.setText(course.getCourseName());
+                    holder.mCeil33.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon2.getValue()) {
-                    holder.mCeil34.setText(course.getCourseName());
+                    holder.mCeil34.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Night.getValue()) {
-                    holder.mCeil35.setText(course.getCourseName());
+                    holder.mCeil35.setText(sb.toString());
                 }
             } else if (c.getWeek() == Week.Thursday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {
-                    holder.mCeil41.setText(course.getCourseName());
+                    holder.mCeil41.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Morning2.getValue()) {
-                    holder.mCeil42.setText(course.getCourseName());
+                    holder.mCeil42.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon1.getValue()) {
-                    holder.mCeil43.setText(course.getCourseName());
+                    holder.mCeil43.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon2.getValue()) {
-                    holder.mCeil44.setText(course.getCourseName());
+                    holder.mCeil44.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Night.getValue()) {
-                    holder.mCeil45.setText(course.getCourseName());
+                    holder.mCeil45.setText(sb.toString());
                 }
             } else if (c.getWeek() == Week.Friday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {
-                    holder.mCeil51.setText(course.getCourseName());
+                    holder.mCeil51.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Morning2.getValue()) {
-                    holder.mCeil52.setText(course.getCourseName());
+                    holder.mCeil52.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon1.getValue()) {
-                    holder.mCeil53.setText(course.getCourseName());
+                    holder.mCeil53.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Afternoon2.getValue()) {
-                    holder.mCeil54.setText(course.getCourseName());
+                    holder.mCeil54.setText(sb.toString());
                 } else if (c.getLession() == Lessions.Night.getValue()) {
-                    holder.mCeil55.setText(course.getCourseName());
+                    holder.mCeil55.setText(sb.toString());
                 }
             }
 

@@ -63,6 +63,14 @@ public class Curriculums implements Serializable {
         return curriculumID;
     }
 
+    public int getCycle() {
+        return cycle;
+    }
+
+    public void setCycle(int cycle) {
+        this.cycle = cycle;
+    }
+
     public void setCurriculumID(int curriculumID) {
         this.curriculumID = curriculumID;
     }
