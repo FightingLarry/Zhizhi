@@ -50,14 +50,23 @@ public class BaseFragment extends ActionbarFragment {
             }
             super.onCreateView(inflater, container, savedInstanceState);
         }
+        addHeaderViews(inflater);
+        addFooterViews(inflater);
+
         if (mainView == null) {
             mainView = super.onCreateView(inflater, container, savedInstanceState);
         }
         return mainView;
     }
 
-    protected void initView(View mMainView) {
+    protected void initView(View mainView) {
 
+    }
+
+    protected void addHeaderViews(LayoutInflater inflater) {
+    }
+
+    protected void addFooterViews(LayoutInflater inflater) {
     }
 
     protected int getLayoutResource() {

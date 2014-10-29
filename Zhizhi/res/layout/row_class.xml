@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/gap.small" >
 
     <LinearLayout
+        android:id="@id/root_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/card_bg"
@@ -93,21 +94,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal" >
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/gap.litle"
+                android:layout_margin="@dimen/gap.small"
                 android:background="@drawable/button_bg"
-                android:text="分享" />
+                android:padding="@dimen/gap.small"
+                android:src="@drawable/add" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/gap.litle"
+                android:layout_margin="@dimen/gap.small"
                 android:background="@drawable/button_bg"
-                android:text="打印" />
+                android:padding="@dimen/gap.small"
+                android:src="@drawable/add" />
         </LinearLayout>
     </LinearLayout>
 

@@ -4,21 +4,19 @@ import me.zhizhi.R;
 import me.zhizhi.utils.FragmentUtils;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.WindowManager;
 
-public class ArbitraryFragmentActivity extends FragmentActivity {
+public class ArbitraryFragmentActivity extends BaseFragmentActivity {
 
-    public static final String EXTRAS_BUNDLE = "me.zhizhi.extras_bundle";
+    public static final String EXTRAS_BUNDLE = "extras_bundle";
 
-    public static final String EXTRAS_FRAGMENT_CLASS_NAME = "me.zhizhi.extras_fragment_class_name";
+    public static final String EXTRAS_FRAGMENT_CLASS_NAME = "extras_fragment_class_name";
 
     public final static String ARGUMENTS_KEY_WINDOW_SOFTINPUTMODE = "arguments_key_window_softinputmode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         Bundle activityBundle = getIntent().getBundleExtra(EXTRAS_BUNDLE);
         if (activityBundle != null) {
             boolean isWindowSoftInputMode = activityBundle.getBoolean(

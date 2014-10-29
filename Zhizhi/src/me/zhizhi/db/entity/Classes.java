@@ -1,7 +1,6 @@
 package me.zhizhi.db.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -24,8 +23,6 @@ public class Classes implements Serializable {
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Academys academy;
-
-    private List<Curriculums> curriculums;
 
     public int getClassID() {
         return classID;
@@ -61,14 +58,6 @@ public class Classes implements Serializable {
 
     public Classes() {
         super();
-    }
-
-    public List<Curriculums> getCurriculums() {
-        return curriculums;
-    }
-
-    public void setCurriculums(List<Curriculums> curriculums) {
-        this.curriculums = curriculums;
     }
 
     public Classes(String className, Integer students, Academys academy) {

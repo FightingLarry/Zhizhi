@@ -1,20 +1,32 @@
 package me.zhizhi.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import me.zhizhi.db.entity.Curriculums;
+import me.zhizhi.adapter.row.ClassCurriculumsRow;
+import me.zhizhi.db.entity.Classes;
+import me.zhizhi.db.helper.DatabaseHelper;
 import me.zhizhi.utils.CollectionUtils;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CurriculumsAdapter extends AbstractAdapter<Curriculums> {
+public class ClassCurriculumsAdapter extends AbstractAdapter<Classes> {
 
     private Context mContext;
 
-    public CurriculumsAdapter(Context context) {
-        super();
+    private View mHead;
+
+    private DatabaseHelper mDatabaseHelper;
+
+    public ClassCurriculumsAdapter(Context context, View head, DatabaseHelper databaseHelper) {
         this.mContext = context;
+        this.mHead = head;
+        this.mDatabaseHelper = databaseHelper;
+
+        if (mList == null) {
+            mList = new ArrayList<Classes>();
+        }
     }
 
     @Override
@@ -24,11 +36,10 @@ public class CurriculumsAdapter extends AbstractAdapter<Curriculums> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //        if (convertView == null) {
-        //            convertView = ClassesRow.newView(mContext);
-        //        }
-        //        ClassesRow.bindView(mContext, convertView, mList.get(position), mDatabaseHelper, position,
-        //                false, true);
+        if (convertView == null) {
+            convertView = ClassCurriculumsRow.newView(mContext, mHead);
+        }
+        ClassCurriculumsRow.bindView(convertView, mList.get(position), mDatabaseHelper);
 
         return convertView;
     }
@@ -44,12 +55,12 @@ public class CurriculumsAdapter extends AbstractAdapter<Curriculums> {
     }
 
     @Override
-    public void addItem(Curriculums t) {
+    public void addItem(Classes t) {
         mList.add(t);
     }
 
     @Override
-    public void addItem(List<Curriculums> list) {
+    public void addItem(List<Classes> list) {
         mList.addAll(list);
     }
 

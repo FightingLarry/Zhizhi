@@ -3,8 +3,8 @@ package me.zhizhi.utils;
 import me.zhizhi.R;
 import me.zhizhi.activity.ArbitraryFragmentActivity;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -80,7 +80,7 @@ public class FragmentUtils {
 
     }
 
-    public static void navigateToInNewActivity(Activity context, String fragmentName, Bundle bundle) {
+    public static void navigateToInNewActivity(Context context, String fragmentName, Bundle bundle) {
         Intent intent = new Intent(context, ArbitraryFragmentActivity.class);
 
         if (bundle != null && bundle.getBoolean(ARGUMENTS_KEY_NO_BACK_STACK)) {
@@ -93,14 +93,15 @@ public class FragmentUtils {
     }
 
     @SuppressLint("NewApi")
-    public static void navigateToInNewActivity(Activity context, String fragmentName,
+    public static void navigateToInNewActivity(Context context, Class<?> fragmentName,
             Bundle bundle, View v) {
         Intent intent = new Intent(context, ArbitraryFragmentActivity.class);
 
         if (bundle != null && bundle.getBoolean(ARGUMENTS_KEY_NO_BACK_STACK)) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         }
-        intent.putExtra(ArbitraryFragmentActivity.EXTRAS_FRAGMENT_CLASS_NAME, fragmentName);
+        intent.putExtra(ArbitraryFragmentActivity.EXTRAS_FRAGMENT_CLASS_NAME,
+                fragmentName.getName());
         intent.putExtra(ArbitraryFragmentActivity.EXTRAS_BUNDLE, bundle);
 
         if (v != null && Utils.hasJellyBean()) {
@@ -118,10 +119,11 @@ public class FragmentUtils {
     }
 
     public static void navigateToInNewActivityForResult(Fragment fragmentContext,
-            String fragmentName, Bundle bundle, int requestCode) {
+            Class<?> fragmentName, Bundle bundle, int requestCode) {
 
         Intent intent = new Intent(fragmentContext.getActivity(), ArbitraryFragmentActivity.class);
-        intent.putExtra(ArbitraryFragmentActivity.EXTRAS_FRAGMENT_CLASS_NAME, fragmentName);
+        intent.putExtra(ArbitraryFragmentActivity.EXTRAS_FRAGMENT_CLASS_NAME,
+                fragmentName.getName());
         intent.putExtra(ArbitraryFragmentActivity.EXTRAS_BUNDLE, bundle);
         fragmentContext.startActivityForResult(intent, requestCode);
     }

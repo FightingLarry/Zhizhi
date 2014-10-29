@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">吱吱</string>
+    <string name="app_description">想起那夕阳下的奔跑，是我逝去发的青春。</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -16,8 +17,8 @@
     <string name="friday">星期五</string>
     <string name="s_class">班级</string>
     
-    <string name="title_classes">班级们</string>
-    <string name="title_teacheres">老师们</string>
+    <string name="title_classes">班级的课程表</string>
+    <string name="title_teacheres">老师的课程表</string>
     <string name="title_curriculums">课程表</string>
     <string name="title_courses">课程们</string>
     <string name="title_classrooms">教室们</string>

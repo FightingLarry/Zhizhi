@@ -3,6 +3,7 @@ package me.zhizhi.db.helper;
 import java.sql.SQLException;
 import java.util.List;
 
+import me.zhizhi.db.constants.Cycle;
 import me.zhizhi.db.constants.Lessions;
 import me.zhizhi.db.constants.Week;
 import me.zhizhi.db.entity.Academys;
@@ -70,42 +71,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, ClassesCurriculums.class);
             TableUtils.createTable(connectionSource, CoursesTeachers.class);
 
-            Courses c44 = new Courses("点集拓扑");
-            getCoursesDao().create(c44);
+            initDB();
 
-            Curriculums cur44 = new Curriculums(Week.Thursday.getValue(),
-                    Lessions.Afternoon2.getValue(), 0, c44);
-            getCurriculumsDao().create(cur44);
-
-            Academys academy = new Academys("沧州师范学院全校课表(按班级)", "数学系", 2014, 2015, 0);
-            getAcademysDao().create(academy);
-
-            Classes b11_1 = new Classes("B11数应-1", 41, academy);
-            getClassesDao().create(b11_1);
-
-            Classes b11_2 = new Classes("B11数应-2", 41, academy);
-            getClassesDao().create(b11_2);
-
-            Classes b12 = new Classes("B12数应", 55, academy);
-            getClassesDao().create(b12);
-
-            Classes z12_1 = new Classes("Z12数教-1", 44, academy);
-            getClassesDao().create(z12_1);
-
-            Classes z12_2 = new Classes("Z12数教-2", 39, academy);
-            getClassesDao().create(z12_2);
-
-            Classes z12 = new Classes("Z12金融", 33, academy);
-            getClassesDao().create(z12);
-
-            ClassesCurriculums cc_b11_1_cur44 = new ClassesCurriculums(b11_1, cur44);
-            getClassesCurriculumsDao().create(cc_b11_1_cur44);
-
-            Titles t1 = new Titles("教授");
-            getTitlesDao().create(t1);
-
-            Teachers tea1 = new Teachers("高恩勇", t1);
-            getTeachersDao().create(tea1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -200,4 +167,94 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         curriculumsQB.where().in(Curriculums.FOREIGN_ID, ccQueryBuilder);
         return curriculumsQB.prepare();
     }
+
+    private void initDB() throws SQLException {
+        Academys academy = new Academys("沧州师范学院全校课表(按班级)", "数学系", 2014, 2015, 0);
+        getAcademysDao().create(academy);
+
+        Courses djtp = new Courses("点集拓扑");
+        getCoursesDao().create(djtp);
+
+        Courses yc = new Courses("运筹学");
+        getCoursesDao().create(yc);
+
+        Courses jhhb = new Courses("几何画板");
+        getCoursesDao().create(jhhb);
+
+        Courses xssy = new Courses("数学实验");
+        getCoursesDao().create(xssy);
+
+        Classes b11_1 = new Classes("B11数应-1", 41, academy);
+        getClassesDao().create(b11_1);
+
+        Curriculums b11_1_cur54 = new Curriculums(Week.Friday.getValue(),
+                Lessions.Afternoon2.getValue(), Cycle.Weekly.getValue(), djtp);
+        getCurriculumsDao().create(b11_1_cur54);
+        ClassesCurriculums cc_b11_1_cur54 = new ClassesCurriculums(b11_1, b11_1_cur54);
+        getClassesCurriculumsDao().create(cc_b11_1_cur54);
+
+        Curriculums cur44 = new Curriculums(Week.Thursday.getValue(),
+                Lessions.Afternoon2.getValue(), Cycle.Weekly.getValue(), djtp);
+        getCurriculumsDao().create(cur44);
+        ClassesCurriculums cc_b11_1_cur44 = new ClassesCurriculums(b11_1, cur44);
+        getClassesCurriculumsDao().create(cc_b11_1_cur44);
+
+        Curriculums b11_1_cur43 = new Curriculums(Week.Thursday.getValue(),
+                Lessions.Afternoon1.getValue(), Cycle.Weekly.getValue(), xssy);
+        getCurriculumsDao().create(b11_1_cur43);
+        ClassesCurriculums cc_b11_1_cur43 = new ClassesCurriculums(b11_1, b11_1_cur43);
+        getClassesCurriculumsDao().create(cc_b11_1_cur43);
+
+        Curriculums b11_1_cur42 = new Curriculums(Week.Thursday.getValue(),
+                Lessions.Morning2.getValue(), Cycle.SingleWeekly.getValue(), jhhb);
+        getCurriculumsDao().create(b11_1_cur42);
+        ClassesCurriculums cc_b11_1_cur42 = new ClassesCurriculums(b11_1, b11_1_cur42);
+        getClassesCurriculumsDao().create(cc_b11_1_cur42);
+
+        Curriculums b11_1_cur34 = new Curriculums(Week.Wednesday.getValue(),
+                Lessions.Afternoon2.getValue(), Cycle.Weekly.getValue(), xssy);
+        getCurriculumsDao().create(b11_1_cur34);
+        ClassesCurriculums cc_b11_1_cur34 = new ClassesCurriculums(b11_1, b11_1_cur34);
+        getClassesCurriculumsDao().create(cc_b11_1_cur34);
+
+        Curriculums b11_1_cur32 = new Curriculums(Week.Wednesday.getValue(),
+                Lessions.Morning2.getValue(), Cycle.Weekly.getValue(), jhhb);
+        getCurriculumsDao().create(b11_1_cur32);
+        ClassesCurriculums cc_b11_1_cur32 = new ClassesCurriculums(b11_1, b11_1_cur32);
+        getClassesCurriculumsDao().create(cc_b11_1_cur32);
+
+        Curriculums b11_1_cur13 = new Curriculums(Week.Monday.getValue(),
+                Lessions.Afternoon1.getValue(), Cycle.Weekly.getValue(), yc);
+        getCurriculumsDao().create(b11_1_cur13);
+        ClassesCurriculums cc_b11_1_cur13 = new ClassesCurriculums(b11_1, b11_1_cur13);
+        getClassesCurriculumsDao().create(cc_b11_1_cur13);
+
+        Curriculums b11_1_cur24 = new Curriculums(Week.Tuesday.getValue(),
+                Lessions.Afternoon2.getValue(), Cycle.Weekly.getValue(), yc);
+        getCurriculumsDao().create(b11_1_cur24);
+        ClassesCurriculums cc_b11_1_cur24 = new ClassesCurriculums(b11_1, b11_1_cur24);
+        getClassesCurriculumsDao().create(cc_b11_1_cur24);
+
+        Classes b11_2 = new Classes("B11数应-2", 41, academy);
+        getClassesDao().create(b11_2);
+
+        Classes b12 = new Classes("B12数应", 55, academy);
+        getClassesDao().create(b12);
+
+        Classes z12_1 = new Classes("Z12数教-1", 44, academy);
+        getClassesDao().create(z12_1);
+
+        Classes z12_2 = new Classes("Z12数教-2", 39, academy);
+        getClassesDao().create(z12_2);
+
+        Classes z12 = new Classes("Z12金融", 33, academy);
+        getClassesDao().create(z12);
+
+        Titles t1 = new Titles("教授");
+        getTitlesDao().create(t1);
+
+        Teachers tea1 = new Teachers("高恩勇", t1);
+        getTeachersDao().create(tea1);
+    }
+
 }
