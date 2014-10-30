@@ -3,15 +3,16 @@ package me.zhizhi.adapter.row;
 import java.sql.SQLException;
 import java.util.List;
 
+import me.zhizhi.R;
 import me.zhizhi.db.constants.Lessions;
 import me.zhizhi.db.constants.Week;
 import me.zhizhi.db.entity.Classes;
 import me.zhizhi.db.entity.Courses;
+import me.zhizhi.db.entity.CoursesTeachers;
 import me.zhizhi.db.entity.Curriculums;
 import me.zhizhi.db.helper.DatabaseHelper;
 import me.zhizhi.widget.HScrollView;
 import me.zhizhi.widget.HScrollView.OnScrollChangedListener;
-import me.zhizhi.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -146,7 +147,8 @@ public class ClassCurriculumsRow {
         }
 
         for (Curriculums c : curriculumsList) {
-            Courses course = c.getCourse();
+            CoursesTeachers ct = c.getCoursesTeacher();
+            Courses course = ct.getCourse();
             if (c.getWeek() == Week.Monday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {
                     holder.mCeil11.setText(course.getCourseName());

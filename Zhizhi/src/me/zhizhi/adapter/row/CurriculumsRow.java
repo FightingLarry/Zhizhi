@@ -8,6 +8,7 @@ import me.zhizhi.db.constants.Lessions;
 import me.zhizhi.db.constants.Week;
 import me.zhizhi.db.entity.Classes;
 import me.zhizhi.db.entity.Courses;
+import me.zhizhi.db.entity.CoursesTeachers;
 import me.zhizhi.db.entity.Curriculums;
 import me.zhizhi.db.helper.DatabaseHelper;
 import me.zhizhi.fragment.ClassesDetailFragment;
@@ -219,7 +220,8 @@ public class CurriculumsRow {
         }
 
         for (Curriculums c : curriculumsList) {
-            Courses course = c.getCourse();
+            CoursesTeachers ct = c.getCoursesTeacher();
+            Courses course = ct.getCourse();
 
             if (c.getWeek() == Week.Monday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {

@@ -10,52 +10,54 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "titles")
 public class Titles implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@DatabaseField(generatedId = true)
-	private int titleID;
+    public static final String FOREIGN_ID = "title_id";
 
-	@DatabaseField
-	private String titleName;
+    @DatabaseField(generatedId = true, columnName = FOREIGN_ID)
+    private int id;
 
-	/**
-	 * 在数据库中不会生成对应的字段 获取到Titles的时候同时会获取Titles下面的Teachers
-	 * 要注意的是：删除Titles的时候，并不会自动删除对应的Teachers
-	 */
-	@ForeignCollectionField
-	private ForeignCollection<Teachers> teacher;
+    @DatabaseField
+    private String titleName;
 
-	public Titles() {
-		super();
-	}
+    /**
+     * 在数据库中不会生成对应的字段 获取到Titles的时候同时会获取Titles下面的Teachers
+     * 要注意的是：删除Titles的时候，并不会自动删除对应的Teachers
+     */
+    @ForeignCollectionField
+    private ForeignCollection<Teachers> teacher;
 
-	public Titles(String titleName) {
-		super();
-		this.titleName = titleName;
-	}
+    public Titles() {
+        super();
+    }
 
-	public int getTitleID() {
-		return titleID;
-	}
+    public Titles(String titleName) {
+        super();
+        this.titleName = titleName;
+    }
 
-	public void setTitleID(int titleID) {
-		this.titleID = titleID;
-	}
+    public String getTitleName() {
+        return titleName;
+    }
 
-	public String getTitleName() {
-		return titleName;
-	}
+    public void setTitleName(String titleName) {
+        this.titleName = titleName;
+    }
 
-	public void setTitleName(String titleName) {
-		this.titleName = titleName;
-	}
+    public ForeignCollection<Teachers> getTeacher() {
+        return teacher;
+    }
 
-	public ForeignCollection<Teachers> getTeacher() {
-		return teacher;
-	}
+    public void setTeacher(ForeignCollection<Teachers> teacher) {
+        this.teacher = teacher;
+    }
 
-	public void setTeacher(ForeignCollection<Teachers> teacher) {
-		this.teacher = teacher;
-	}
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }

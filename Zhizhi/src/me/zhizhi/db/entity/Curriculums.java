@@ -38,11 +38,11 @@ public class Curriculums implements Serializable {
     @DatabaseField(defaultValue = "0")
     private int cycle;
 
-    @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private Courses course;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = CoursesTeachers.FOREIGN_ID)
+    private CoursesTeachers coursesTeacher;
 
-    @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private Curriculums curriculums;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = Classrooms.FOREIGN_ID)
+    private Classrooms classroom;
 
     public int getCurriculumID() {
         return curriculumID;
@@ -76,32 +76,32 @@ public class Curriculums implements Serializable {
         this.lession = lession;
     }
 
-    public Courses getCourse() {
-        return course;
+    public CoursesTeachers getCoursesTeacher() {
+        return coursesTeacher;
     }
 
-    public void setCourse(Courses course) {
-        this.course = course;
+    public void setCoursesTeacher(CoursesTeachers coursesTeacher) {
+        this.coursesTeacher = coursesTeacher;
     }
 
-    public Curriculums getCurriculums() {
-        return curriculums;
+    public Classrooms getClassroom() {
+        return classroom;
     }
 
-    public void setCurriculums(Curriculums curriculums) {
-        this.curriculums = curriculums;
+    public void setClassroom(Classrooms classroom) {
+        this.classroom = classroom;
     }
 
     public Curriculums() {
         super();
     }
 
-    public Curriculums(int week, int lession, int cycle, Courses course) {
+    public Curriculums(int week, int lession, int cycle, CoursesTeachers coursesTeacher) {
         super();
         this.week = week;
         this.lession = lession;
         this.cycle = cycle;
-        this.course = course;
+        this.coursesTeacher = coursesTeacher;
     }
 
 }

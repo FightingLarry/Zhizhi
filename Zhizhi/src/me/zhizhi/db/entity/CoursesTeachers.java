@@ -12,49 +12,51 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "courses_teachers")
 public class CoursesTeachers implements Serializable {
 
-	private static final long serialVersionUID = -5340364036338241779L;
+    private static final long serialVersionUID = -5340364036338241779L;
 
-	@DatabaseField(generatedId = true)
-	private int coursTeacherID;
+    public static final String FOREIGN_ID = "coursesteachers_id";
 
-	@DatabaseField(foreign = true, columnName = Courses.FOREIGN_ID)
-	private Courses courses;
+    @DatabaseField(generatedId = true, columnName = FOREIGN_ID)
+    private int coursTeacherID;
 
-	@DatabaseField(foreign = true, columnName = Teachers.FOREIGN_ID)
-	private Teachers teacher;
+    @DatabaseField(foreign = true, columnName = Courses.FOREIGN_ID)
+    private Courses course;
 
-	public int getCoursTeacherID() {
-		return coursTeacherID;
-	}
+    @DatabaseField(foreign = true, columnName = Teachers.FOREIGN_ID)
+    private Teachers teacher;
 
-	public void setCoursTeacherID(int coursTeacherID) {
-		this.coursTeacherID = coursTeacherID;
-	}
+    public int getCoursTeacherID() {
+        return coursTeacherID;
+    }
 
-	public Courses getCourses() {
-		return courses;
-	}
+    public void setCoursTeacherID(int coursTeacherID) {
+        this.coursTeacherID = coursTeacherID;
+    }
 
-	public void setCourses(Courses courses) {
-		this.courses = courses;
-	}
+    public Courses getCourse() {
+        return course;
+    }
 
-	public Teachers getTeacher() {
-		return teacher;
-	}
+    public void setCourse(Courses course) {
+        this.course = course;
+    }
 
-	public void setTeacher(Teachers teacher) {
-		this.teacher = teacher;
-	}
+    public Teachers getTeacher() {
+        return teacher;
+    }
 
-	public CoursesTeachers() {
-		super();
-	}
+    public void setTeacher(Teachers teacher) {
+        this.teacher = teacher;
+    }
 
-	public CoursesTeachers(Courses courses, Teachers teacher) {
-		super();
-		this.courses = courses;
-		this.teacher = teacher;
-	}
+    public CoursesTeachers() {
+        super();
+    }
+
+    public CoursesTeachers(Courses course, Teachers teacher) {
+        super();
+        this.course = course;
+        this.teacher = teacher;
+    }
 
 }

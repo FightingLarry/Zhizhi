@@ -9,7 +9,9 @@ import me.zhizhi.db.constants.Lessions;
 import me.zhizhi.db.constants.Week;
 import me.zhizhi.db.entity.Classes;
 import me.zhizhi.db.entity.Courses;
+import me.zhizhi.db.entity.CoursesTeachers;
 import me.zhizhi.db.entity.Curriculums;
+import me.zhizhi.db.entity.Teachers;
 import me.zhizhi.db.helper.DatabaseHelper;
 import me.zhizhi.fragment.ClassesDetailFragment;
 import me.zhizhi.utils.FragmentUtils;
@@ -228,16 +230,26 @@ public class ClassesRow {
         }
 
         for (Curriculums c : curriculumsList) {
-            Courses course = c.getCourse();
+            CoursesTeachers ct = c.getCoursesTeacher();
+            Courses course = ct.getCourse();
+            Teachers teacher = ct.getTeacher();
             if (course == null) {
                 break;
             }
             StringBuilder sb = new StringBuilder();
             sb.append(course.getCourseName());
+
+            if (teacher != null) {
+                sb.append("\n").append(teacher.getTeacherName());
+                if (teacher.getTitle() != null
+                        && !TextUtils.isEmpty(teacher.getTitle().getTitleName())) {
+                    sb.append("(").append(teacher.getTitle().getTitleName()).append(")");
+                }
+            }
             if (c.getCycle() == Cycle.SingleWeekly.getValue()
                     || c.getCycle() == Cycle.Biweekly.getValue()) {
                 String[] cycleArray = context.getResources().getStringArray(R.array.arr_cycle);
-                sb.append("(").append(cycleArray[c.getCycle() - 1]).append(")");
+                sb.append("\n[").append(cycleArray[c.getCycle() - 1]).append("]");
             }
             if (c.getWeek() == Week.Monday.getValue()) {
                 if (c.getLession() == Lessions.Morning1.getValue()) {

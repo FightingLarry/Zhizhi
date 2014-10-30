@@ -13,7 +13,7 @@ public class Teachers implements Serializable {
     public static final String FOREIGN_ID = "teacher_id";
 
     @DatabaseField(generatedId = true, columnName = FOREIGN_ID)
-    private int teacherID;
+    private int id;
 
     @DatabaseField
     private String teacherName;
@@ -22,7 +22,7 @@ public class Teachers implements Serializable {
      * 这个是一个普通的字段@DatabaseField，只是在后面加了个foreign 在数据库中的名称默认为title_id
      * 查询到的Teachers对象中可以直接获取到对应的Titles 删除Teachers，并不会同时删除Titles
      */
-    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = Titles.FOREIGN_ID)
     private Titles title;
 
     // @ForeignCollectionField
@@ -39,18 +39,12 @@ public class Teachers implements Serializable {
         this.title = title;
     }
 
-    public Teachers(int teacherID, String teacherName) {
-        super();
-        this.teacherID = teacherID;
-        this.teacherName = teacherName;
+    public int getId() {
+        return id;
     }
 
-    public int getTeacherID() {
-        return teacherID;
-    }
-
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTeacherName() {

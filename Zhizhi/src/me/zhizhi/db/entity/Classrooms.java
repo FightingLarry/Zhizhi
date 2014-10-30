@@ -12,14 +12,16 @@ public class Classrooms implements Serializable {
 
     private static final long serialVersionUID = 7551429713491681659L;
 
-    @DatabaseField(generatedId = true)
+    public static final String FOREIGN_ID = "classroom_id";
+
+    @DatabaseField(generatedId = true, columnName = FOREIGN_ID)
     private Integer classroomID;
 
     @DatabaseField
     private String classroomName;
 
     @ForeignCollectionField
-    private ForeignCollection<Classrooms> classrooms;
+    private ForeignCollection<Curriculums> curriculums;
 
     public Integer getClassroomID() {
         return classroomID;
@@ -37,12 +39,12 @@ public class Classrooms implements Serializable {
         this.classroomName = classroomName;
     }
 
-    public ForeignCollection<Classrooms> getClassrooms() {
-        return classrooms;
+    public ForeignCollection<Curriculums> getCurriculums() {
+        return curriculums;
     }
 
-    public void setClassrooms(ForeignCollection<Classrooms> classrooms) {
-        this.classrooms = classrooms;
+    public void setCurriculums(ForeignCollection<Curriculums> curriculums) {
+        this.curriculums = curriculums;
     }
 
     public Classrooms() {
